@@ -12,7 +12,7 @@ const About = () => {
             About {"{{COMPANY_NAME}}"}
           </h1>
           <p className="text-xl max-w-3xl mx-auto">
-            Professional tree services with over 15 years of experience serving the Houston area. 
+            Professional tree services with over 27 years of experience serving the Houston area. 
             Licensed, insured, and dedicated to keeping your property safe and beautiful.
           </p>
         </div>
@@ -34,7 +34,7 @@ const About = () => {
               </p>
               <div className="flex flex-wrap gap-4">
                 <Button variant="cta" asChild>
-                  <a href="tel:+19253894584">
+                  <a href="tel:+11234567890">
                     <Phone className="h-4 w-4" />
                     Call Today
                   </a>
@@ -49,7 +49,7 @@ const About = () => {
             <div className="bg-muted/50 rounded-2xl p-8">
               <div className="grid grid-cols-2 gap-6">
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-primary mb-2">15+</div>
+                  <div className="text-3xl font-bold text-primary mb-2">27+</div>
                   <div className="text-sm text-muted-foreground">Years Experience</div>
                 </div>
                 <div className="text-center">

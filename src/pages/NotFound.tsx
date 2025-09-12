@@ -47,7 +47,7 @@ const NotFound = () => {
               our team is standing by to help.
             </p>
             <Button variant="accent" asChild>
-              <a href="tel:+19253894584">
+              <a href="tel:+11234567890">
                 <Phone className="h-4 w-4" />
                 Call Now
               </a>

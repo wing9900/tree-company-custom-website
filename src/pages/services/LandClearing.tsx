@@ -47,7 +47,7 @@ const LandClearing = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" variant="default" asChild>
-                <a href="tel:+19253894584">
+                <a href="tel:+11234567890">
                   <Phone className="mr-2 h-5 w-5" />
                   Get Project Quote
                 </a>

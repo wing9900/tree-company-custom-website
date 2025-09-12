@@ -47,7 +47,7 @@ const Emergency = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="xl" variant="default" asChild>
-                <a href="tel:+19253894584">
+                <a href="tel:+11234567890">
                   <AlertTriangle className="mr-2 h-6 w-6" />
                   EMERGENCY HOTLINE
                 </a>
@@ -89,7 +89,7 @@ const Emergency = () => {
             </div>
             <p className="text-xl mb-4">Don't wait - trees under storm stress are extremely dangerous</p>
             <Button size="xl" variant="secondary" asChild>
-              <a href="tel:+19253894584" className="font-bold">
+              <a href="tel:+11234567890" className="font-bold">
                 <Phone className="mr-2 h-6 w-6" />
                 CALL NOW: Emergency Response Team
               </a>

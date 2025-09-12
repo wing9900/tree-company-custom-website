@@ -43,18 +43,18 @@ const Header = () => {
   }];
   return <>
       {/* Top Contact Bar */}
-      <div className="bg-primary text-primary-foreground py-2 px-4 text-sm">
+      <div className="bg-primary text-primary-foreground py-2 px-4 text-base">
         <div className="container-custom flex justify-between items-center">
           <div className="hidden md:flex items-center gap-6">
             <div className="flex items-center gap-2">
               <Phone className="h-4 w-4" />
-              <span>{"{{Phone Number}}"}</span>
+              <span>{"281-757-2938"}</span>
             </div>
             <div className="flex items-center gap-2">
               <MapPin className="h-4 w-4" />
-              <span>{"{{CITY}}, {{STATE}}"}</span>
+              <span>{"Pasadena, TX"}</span>
             </div>
-            <div className="text-xs">
+            <div className="text-sm">
               Licensed & Insured • Emergency Services Available 24/7
             </div>
           </div>
@@ -79,8 +79,15 @@ const Header = () => {
               });
             }
           }}>
-              <div className="text-2xl font-bold text-primary">
-                {"{{COMPANY_NAME}}"}
+              <div 
+                className="text-2xl font-bold tracking-wide text-orange-500"
+                style={{
+                  fontFamily: 'Montserrat, sans-serif',
+                  fontWeight: '700',
+                  textShadow: '1.25px 1.25px 1.5px rgba(0,0,0,0.9)'
+                }}
+              >
+                {"Gulf Coast Tree Removal"}
               </div>
             </Link>
 
@@ -106,7 +113,7 @@ const Header = () => {
                       }
                     }
                   }
-                }} className={`text-sm font-medium transition-colors hover:text-primary ${isActive(item.href) ? "text-primary border-b-2 border-primary" : "text-muted-foreground"}`}>
+                }} className={`text-base font-medium transition-colors hover:text-primary ${isActive(item.href) ? "text-primary border-b-2 border-primary" : "text-gray-700"}`}>
                       {item.name}
                     </button>;
               }
@@ -119,7 +126,7 @@ const Header = () => {
                     behavior: "smooth"
                   });
                 }
-              }} className={`text-sm font-medium transition-colors hover:text-primary ${isActive(item.href) ? "text-primary border-b-2 border-primary" : "text-muted-foreground"}`}>
+              }} className={`text-base font-medium transition-colors hover:text-primary ${isActive(item.href) ? "text-primary border-b-2 border-primary" : "text-gray-700"}`}>
                     {item.name}
                   </Link>;
             })}
@@ -177,7 +184,7 @@ const Header = () => {
                           }
                         }
                       }
-                    }} className={`text-sm font-medium transition-colors hover:text-primary text-left ${isActive(item.href) ? "text-primary" : "text-foreground"}`}>
+                    }} className={`text-base font-medium transition-colors hover:text-primary text-left ${isActive(item.href) ? "text-primary" : "text-gray-800"}`}>
                           {item.name}
                         </button>;
                   }
@@ -191,7 +198,7 @@ const Header = () => {
                         behavior: "smooth"
                       });
                     }
-                  }} className={`text-sm font-medium transition-colors hover:text-primary text-left ${isActive(item.href) ? "text-primary" : "text-foreground"}`}>
+                  }} className={`text-base font-medium transition-colors hover:text-primary text-left ${isActive(item.href) ? "text-primary" : "text-gray-800"}`}>
                         {item.name}
                       </Link>;
                 })}

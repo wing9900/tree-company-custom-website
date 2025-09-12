@@ -92,7 +92,7 @@ const Footer = ({
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button variant="accent" size="xl" asChild>
-                  <a href="tel:+19253894584">
+                  <a href="tel:+11234567890">
                     <Phone className="h-5 w-5" />
                     Call Now
                   </a>
@@ -115,7 +115,7 @@ const Footer = ({
           <div className="lg:col-span-1">
             <div className="text-2xl font-bold mb-4">{"{{COMPANY_NAME}}"}</div>
             <p className="text-primary-foreground/80 mb-6">
-              Professional tree services with over 15 years of experience. Licensed, insured, and dedicated to keeping your property safe and beautiful.
+              Professional tree services with over 27 years of experience. Licensed, insured, and dedicated to keeping your property safe and beautiful.
             </p>
 
             {/* Trust Badges */}

@@ -95,7 +95,7 @@ const FAQSection = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button variant="secondary" size="lg" asChild>
-                <a href="tel:+19253894584">
+                <a href="tel:+11234567890">
                   <Phone className="h-5 w-5" />
                   Call Now for Answers
                 </a>
