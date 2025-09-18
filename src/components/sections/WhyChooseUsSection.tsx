@@ -35,6 +35,7 @@ const WhyChooseUsSection = () => {
     avatar: "M",
     date: "2025-08-15",
     rating: 5,
+    city: "Houston",
     text: "After a big storm, we had a massive oak branch hanging dangerously over our driveway. I called in a panic, and they had a crew out here the same afternoon. They were professional, worked incredibly fast, and left the yard cleaner than they found it. Truly a top-notch emergency service.",
     readMore: false
   }, {
@@ -43,6 +44,7 @@ const WhyChooseUsSection = () => {
     avatar: "S",
     date: "2025-08-02",
     rating: 5,
+    city: "Katy",
     text: "I needed two large pine trees removed that were too close to the house. The team was amazing from start to finish. They provided a fair and transparent quote, arrived on time, and took down the trees with surgical precision. I would highly recommend this company to anyone.",
     readMore: false
   }, {
@@ -51,6 +53,7 @@ const WhyChooseUsSection = () => {
     avatar: "D",
     date: "2025-07-28",
     rating: 5,
+    city: "Sugar Land",
     text: "We used them for stump grinding on three old stumps in our backyard, and the results were fantastic. The technician was skilled and made quick work of them. It's like they were never there. Excellent service and very reasonable pricing.",
     readMore: false
   }, {
@@ -59,6 +62,7 @@ const WhyChooseUsSection = () => {
     avatar: "E",
     date: "2025-07-19",
     rating: 5,
+    city: "Richmond",
     text: "This is my 2nd time using this service and they continue to impress. This time it was for routine tree trimming to get more light into our yard. They did an excellent job shaping the trees and provided great advice on how to keep them healthy. Very professional team.",
     readMore: false
   }, {
@@ -67,6 +71,7 @@ const WhyChooseUsSection = () => {
     avatar: "C",
     date: "2025-07-11",
     rating: 5,
+    city: "Rosenberg",
     text: "I was extremely impressed with the crew's attention to safety and detail. They had to remove a tree that was awkwardly positioned near power lines, and they handled it flawlessly. The entire process was smooth and stress-free. A very reliable and skilled company.",
     readMore: false
   }, {
@@ -75,6 +80,7 @@ const WhyChooseUsSection = () => {
     avatar: "J",
     date: "2025-06-30",
     rating: 5,
+    city: "Fulshear",
     text: "From the initial call for a quote to the final cleanup, every interaction was professional and courteous. They delivered on every promise at a fair price. They did excellent work and cleaned up perfectly. So glad we chose them!",
     readMore: false
   }, {
@@ -83,6 +89,7 @@ const WhyChooseUsSection = () => {
     avatar: "T",
     date: "2025-06-21",
     rating: 5,
+    city: "Cypress",
     text: "Needed a large plot of land cleared of overgrown brush and small trees. The crew arrived with impressive equipment and worked tirelessly to get the job done ahead of schedule. The transformation is incredible. Highly recommend for any land clearing projects.",
     readMore: false
   }, {
@@ -91,6 +98,7 @@ const WhyChooseUsSection = () => {
     avatar: "O",
     date: "2025-06-14",
     rating: 5,
+    city: "Pasadena",
     text: "Quick, efficient, and professional. They helped us with a stump removal we had been putting off for years. I would highly recommend them. They provided reasonable prices and did a great job cleaning up after they finished. Wish we had called them sooner!",
     readMore: false
   }];
@@ -268,6 +276,7 @@ const WhyChooseUsSection = () => {
                               </svg>
                             </div>
                           </div>
+                          <div className="text-sm text-primary font-medium mb-1">{review.city}, TX</div>
                           <div className="text-sm text-muted-foreground mb-2">{review.date}</div>
                           <div className="flex items-center gap-1 mb-3">
                             {[...Array(review.rating)].map((_, i) => <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />)}
