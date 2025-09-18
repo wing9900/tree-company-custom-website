@@ -10,7 +10,7 @@ const Blog = () => {
     {
       id: 1,
       title: "Don't Let Hurricane Season Catch You Off Guard: Essential Tree Services for Houston Homes",
-      excerpt: "Living in Houston and the surrounding Harris County areas, we know the beauty and importance of our trees. Learn why professional tree services are essential for hurricane preparation.",
+      excerpt: "Living in <a href='/areas/houston'><strong>Houston</strong></a> and the surrounding Harris County areas, we know the beauty and importance of our trees. Learn why professional tree services are essential for hurricane preparation.",
       date: "2025-08-15",
       readTime: "5 min read",
       author: "Tree Care Expert",
@@ -18,15 +18,15 @@ const Blog = () => {
       content: [
         {
           type: "paragraph",
-          text: "Living in Houston and the surrounding Harris County areas, we know the beauty and importance of our trees. They provide crucial shade from the Texas heat, enhance our property value, and contribute to our vibrant urban ecosystem. However, our subtropical climate and the ever-present threat of hurricanes mean our trees require specialized care to stay healthy and safe."
+          text: "Living in <a href='/areas/houston'><strong>Houston</strong></a> and the surrounding Harris County areas, we know the beauty and importance of our trees. They provide crucial shade from the Texas heat, enhance our property value, and contribute to our vibrant urban ecosystem. However, our subtropical climate and the ever-present threat of hurricanes mean our trees require specialized care to stay healthy and safe."
         },
         {
           type: "paragraph",
-          text: "Ignoring tree maintenance can lead to significant problems, especially when severe weather hits. That's why professional tree services in Houston are not just a luxury – they're a necessity."
+          text: "Ignoring tree maintenance can lead to significant problems, especially when severe weather hits. That's why professional tree services in <a href='/areas/houston'><strong>Houston</strong></a> are not just a luxury – they're a necessity."
         },
         {
           type: "paragraph",
-          text: "Here are three critical reasons why hiring an experienced arborist in Houston is vital for your property."
+          text: "Here are three critical reasons why hiring an experienced arborist in <a href='/areas/houston'><strong>Houston</strong></a> is vital for your property."
         },
         {
           type: "heading",
@@ -34,14 +34,14 @@ const Blog = () => {
         },
         {
           type: "paragraph",
-          text: "Houston's hot and humid conditions can create a breeding ground for tree diseases and pests. Our professional tree trimming and pruning services are essential for maintaining healthy trees:"
+          text: "<a href='/areas/houston'><strong>Houston</strong></a>'s hot and humid conditions can create a breeding ground for tree diseases and pests. Our professional <a href='/services/tree-trimming'><strong>tree trimming and pruning services</strong></a> are essential for maintaining healthy trees:"
         },
         {
           type: "list",
           items: [
             "**Removing Dead and Diseased Branches:** We expertly remove dead, dying, or diseased limbs, preventing the spread of problems that thrive in our moist environment. This also reduces the risk of branch failure during strong winds.",
             "**Improving Air Circulation:** Thinning the canopy allows for better airflow, which helps to dry out foliage and reduce the incidence of fungal diseases common in our area.",
-            "**Structural Pruning for Young Trees:** Establishing a strong structure early in a tree's life is crucial for its long-term health and resilience against storms. Our arborists understand the specific needs of Houston's diverse tree species."
+            "**Structural Pruning for Young Trees:** Establishing a strong structure early in a tree's life is crucial for its long-term health and resilience against storms. Our arborists understand the specific needs of <a href='/areas/houston'><strong>Houston</strong></a>'s diverse tree species."
           ]
         },
         {
@@ -50,14 +50,14 @@ const Blog = () => {
         },
         {
           type: "paragraph",
-          text: "Hurricane season is a serious concern for Houston homeowners. Weak or overgrown trees pose a significant threat during high winds. Our Harris County tree services focus on mitigating these dangers:"
+          text: "Hurricane season is a serious concern for <a href='/areas/houston'><strong>Houston</strong></a> homeowners. Weak or overgrown trees pose a significant threat during high winds. Our Harris County tree services focus on mitigating these dangers:"
         },
         {
           type: "list",
           items: [
             "**Hazard Reduction Pruning:** We identify and remove branches that are weakly attached, overextended, or pose a risk to your home, power lines, or other structures. This proactive approach can significantly reduce storm damage.",
             "**Crown Reduction for Wind Resistance:** Properly reducing the crown of a tree can decrease wind resistance, making it less likely to be uprooted or suffer major branch damage during a hurricane or tropical storm. Important Note: This should only be done by qualified arborists to avoid harming the tree.",
-            "**Emergency Tree Removal:** After a storm, we provide prompt and safe emergency tree removal services to clear fallen trees and debris, helping you recover quickly."
+            "**Emergency Tree Removal:** After a storm, we provide prompt and safe <a href='/services/emergency'><strong>emergency tree removal services</strong></a> to clear fallen trees and debris, helping you recover quickly."
           ]
         },
         {
@@ -66,7 +66,7 @@ const Blog = () => {
         },
         {
           type: "paragraph",
-          text: "Well-maintained trees not only protect your property but also significantly enhance its beauty and value. Our skilled arborists prune with an understanding of tree aesthetics, ensuring a natural and pleasing shape. This professional care contributes to a well-manicured landscape, boosting your curb appeal in the competitive Houston real estate market."
+          text: "Well-maintained trees not only protect your property but also significantly enhance its beauty and value. Our skilled arborists prune with an understanding of tree aesthetics, ensuring a natural and pleasing shape. This professional care contributes to a well-manicured landscape, boosting your curb appeal in the competitive <a href='/areas/houston'><strong>Houston</strong></a> real estate market."
         },
         {
           type: "paragraph",
@@ -74,7 +74,7 @@ const Blog = () => {
         },
         {
           type: "paragraph",
-          text: "Don't wait until hurricane season is upon us. Contact us today for a free consultation and estimate for all your tree care needs in Houston, Sugar Land, The Woodlands, and the surrounding Greater Houston area."
+          text: "Don't wait until hurricane season is upon us. Contact us today for a free consultation and estimate for all your tree care needs in <a href='/areas/houston'><strong>Houston</strong></a>, <a href='/areas/sugar-land'><strong>Sugar Land</strong></a>, <a href='/areas/the-woodlands'><strong>The Woodlands</strong></a>, and the surrounding Greater Houston area."
         }
       ]
     },
@@ -89,11 +89,11 @@ const Blog = () => {
       content: [
         {
           type: "paragraph",
-          text: "In Houston, our trees are more than just landscape features; they are magnificent assets. From the majestic live oaks in River Oaks to the tall pines in The Woodlands, they provide essential shade, beauty, and value. But like any living thing, they can suffer from stress, disease, and pests, especially in our unique Gulf Coast climate."
+          text: "In <a href='/areas/houston'><strong>Houston</strong></a>, our trees are more than just landscape features; they are magnificent assets. From the majestic live oaks in River Oaks to the tall pines in <a href='/areas/the-woodlands'><strong>The Woodlands</strong></a>, they provide essential shade, beauty, and value. But like any living thing, they can suffer from stress, disease, and pests, especially in our unique Gulf Coast climate."
         },
         {
           type: "paragraph",
-          text: "Often, a tree will show subtle signs of distress long before it becomes a major hazard. Spotting these early warnings can be the difference between saving a beloved tree and facing a costly removal or property damage. As a leading Houston tree service, we want homeowners to know what to look for."
+          text: "Often, a tree will show subtle signs of distress long before it becomes a major hazard. Spotting these early warnings can be the difference between saving a beloved tree and facing a costly removal or property damage. As a leading <a href='/areas/houston'><strong>Houston</strong></a> tree service, we want homeowners to know what to look for."
         },
         {
           type: "paragraph",
@@ -111,7 +111,7 @@ const Blog = () => {
           type: "list",
           items: [
             "**Premature Leaf Drop:** Are leaves falling in spring or summer?",
-            "**Discolored Leaves:** Yellowing (chlorosis), browning, or spotted leaves can signal nutrient deficiencies, pest issues, or fungal diseases common in Houston's humidity.",
+            "**Discolored Leaves:** Yellowing (chlorosis), browning, or spotted leaves can signal nutrient deficiencies, pest issues, or fungal diseases common in <a href='/areas/houston'><strong>Houston</strong></a>'s humidity.",
             "**Thinning Canopy:** If you can see much more daylight through the tree's canopy than you used to, it's a sign of significant stress or dieback."
           ]
         },
@@ -121,11 +121,11 @@ const Blog = () => {
         },
         {
           type: "paragraph",
-          text: "Look up! The presence of dead, leafless branches, especially in the upper canopy, is a clear sign of a problem. This \"deadwood\" is not only an indicator of poor tree health but also poses a significant safety risk. These brittle branches are often the first to snap and fall during one of Houston's notorious thunderstorms or tropical storms."
+          text: "Look up! The presence of dead, leafless branches, especially in the upper canopy, is a clear sign of a problem. This \"deadwood\" is not only an indicator of poor tree health but also poses a significant safety risk. These brittle branches are often the first to snap and fall during one of <a href='/areas/houston'><strong>Houston</strong></a>'s notorious thunderstorms or tropical storms."
         },
         {
           type: "paragraph",
-          text: "Regular tree pruning by a professional arborist to remove deadwood is crucial for both the tree's health and your family's safety."
+          text: "Regular <a href='/services/tree-trimming'><strong>tree pruning</strong></a> by a professional arborist to remove deadwood is crucial for both the tree's health and your family's safety."
         },
         {
           type: "heading",
@@ -149,7 +149,7 @@ const Blog = () => {
         },
         {
           type: "paragraph",
-          text: "If your tree has started to lean, especially after a storm or period of heavy rain, it requires immediate attention. A sudden shift in posture, or the appearance of heaving soil and exposed roots on one side of the tree's base, could mean the root system is failing. This makes the tree a significant fall risk and may require emergency tree service."
+          text: "If your tree has started to lean, especially after a storm or period of heavy rain, it requires immediate attention. A sudden shift in posture, or the appearance of heaving soil and exposed roots on one side of the tree's base, could mean the root system is failing. This makes the tree a significant fall risk and may require <a href='/services/emergency'><strong>emergency tree service</strong></a>."
         },
         {
           type: "heading",
@@ -169,7 +169,7 @@ const Blog = () => {
         },
         {
           type: "paragraph",
-          text: "An expert arborist in Houston can identify the specific pest and recommend the most effective treatment plan."
+          text: "An expert arborist in <a href='/areas/houston'><strong>Houston</strong></a> can identify the specific pest and recommend the most effective treatment plan."
         },
         {
           type: "heading",
@@ -177,15 +177,15 @@ const Blog = () => {
         },
         {
           type: "paragraph",
-          text: "If you notice any of these signs, don't attempt a DIY diagnosis. A Certified Arborist has the training and experience to accurately assess the tree's health, identify the root cause of the problem, and recommend a course of action—whether it's targeted pruning, treatment, or, if necessary, safe tree removal."
+          text: "If you notice any of these signs, don't attempt a DIY diagnosis. A Certified Arborist has the training and experience to accurately assess the tree's health, identify the root cause of the problem, and recommend a course of action—whether it's targeted <a href='/services/tree-trimming'><strong>pruning</strong></a>, <a href='/services/health-management'><strong>treatment</strong></a>, or, if necessary, <a href='/services/tree-removal'><strong>safe tree removal</strong></a>."
         },
         {
           type: "paragraph",
-          text: "**Concerned about the health of a tree on your Houston property?**"
+          text: "**Concerned about the health of a tree on your <a href='/areas/houston'><strong>Houston</strong></a> property?**"
         },
         {
           type: "paragraph",
-          text: "Protect your investment and ensure your peace of mind. Contact us today for a professional tree health inspection. We proudly serve homeowners throughout the Greater Houston area, including Sugar Land, Katy, The Woodlands, and Harris County."
+          text: "Protect your investment and ensure your peace of mind. Contact us today for a professional tree health inspection. We proudly serve homeowners throughout the Greater <a href='/areas/houston'><strong>Houston</strong></a> area, including <a href='/areas/sugar-land'><strong>Sugar Land</strong></a>, <a href='/areas/katy'><strong>Katy</strong></a>, <a href='/areas/the-woodlands'><strong>The Woodlands</strong></a>, and Harris County."
         }
       ]
     }
@@ -224,7 +224,7 @@ const Blog = () => {
     <Layout hideCTA={true}>
       {/* SEO Meta Tags */}
       <div className="hidden">
-        <h1>Houston Tree Service Blog - Expert Tree Care Tips & Insights</h1>
+        <h1><a href='/areas/houston'><strong>Houston</strong></a> Tree Service Blog - Expert Tree Care Tips & Insights</h1>
       </div>
       
       <div className="container-custom section-padding">
@@ -242,7 +242,7 @@ const Blog = () => {
             Tree Care Blog
           </h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Expert insights and tips for maintaining healthy trees in Houston's unique climate
+            Expert insights and tips for maintaining healthy trees in <a href='/areas/houston'><strong>Houston</strong></a>'s unique climate
           </p>
         </header>
 
@@ -282,9 +282,8 @@ const Blog = () => {
                     </div>
                   </div>
                   
-                  <p className="text-muted-foreground leading-relaxed mt-4">
-                    {post.excerpt}
-                  </p>
+                  <p className="text-muted-foreground leading-relaxed mt-4" 
+                     dangerouslySetInnerHTML={{ __html: post.excerpt }} />
                 </CardHeader>
                 
                 <CardContent className="prose prose-lg max-w-none">
@@ -303,7 +302,7 @@ const Blog = () => {
             Need Professional Tree Care?
           </h2>
           <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-            Our certified arborists are ready to help with all your tree care needs in Houston and surrounding areas.
+            Our certified arborists are ready to help with all your tree care needs in <a href='/areas/houston'><strong>Houston</strong></a> and surrounding areas.
           </p>
           <Link to="/contact">
             <Button size="lg" className="shadow-md hover:shadow-lg">

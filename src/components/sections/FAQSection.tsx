@@ -40,7 +40,7 @@ const FAQSection = () => {
     },
     {
       question: "What areas do you service?",
-      answer: "We serve the greater Houston area including Katy, Sugar Land, Richmond, Rosenberg, Fulshear, Cypress, and surrounding communities in Harris and Fort Bend counties. Contact us to confirm service availability in your specific location."
+      answer: "We serve the greater Houston area including <a href='/areas/katy'><strong>Katy</strong></a>, <a href='/areas/sugar-land'><strong>Sugar Land</strong></a>, <a href='/areas/richmond'><strong>Richmond</strong></a>, <a href='/areas/rosenberg'><strong>Rosenberg</strong></a>, <a href='/areas/fulshear'><strong>Fulshear</strong></a>, <a href='/areas/cypress'><strong>Cypress</strong></a>, and surrounding communities in Harris and Fort Bend counties. Contact us to confirm service availability in your specific location."
     }
   ];
 
