@@ -134,10 +134,10 @@ const Header = () => {
 
             {/* CTA Buttons - Desktop */}
             <div className="hidden lg:flex items-center space-x-3">
-              <CallButton variant="cta" size="sm" showIcon={false}>
+              <CallButton variant="cta" size="sm" showIcon={false} className="shadow-lg">
                 Call Now
               </CallButton>
-              <Button variant="cta" size="sm" asChild>
+              <Button variant="cta" size="sm" asChild className="shadow-lg">
                 <Link to="/contact" onClick={e => {
                 // If already on contact page, scroll to top
                 if (location.pathname === '/contact') {
@@ -204,10 +204,10 @@ const Header = () => {
                 })}
                   
                   <div className="pt-4 border-t space-y-3">
-                    <CallButton variant="cta" className="w-full" showIcon={false}>
+                    <CallButton variant="cta" className="w-full shadow-lg" showIcon={false}>
                       Call Now
                     </CallButton>
-                    <Button variant="cta" className="w-full" asChild>
+                    <Button variant="cta" className="w-full shadow-lg" asChild>
                       <Link to="/contact" onClick={e => {
                       setIsOpen(false);
                       // If already on contact page, scroll to top

@@ -177,15 +177,21 @@ const WhyChooseUsSection = () => {
 
         {/* Reasons Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {reasons.map((reason, index) => <Card key={reason.title} className={`hover-lift animate-fade-in shadow-soft ${reason.bgColor} ${reason.borderColor}`} style={{
+          {reasons.map((reason, index) => <Card key={reason.title} className={`hover-lift animate-fade-in shadow-soft ${reason.bgColor} ${reason.borderColor} relative overflow-hidden`} style={{
           animationDelay: `${index * 0.1}s`
         }}>
+              {/* Top Gradient Accent */}
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#2a5a3a] via-[#3a6a4a] to-[#2a5a3a]"></div>
+              
+              {/* Left Side Gradient Accent */}
+              <div className="absolute top-0 left-0 bottom-0 w-1 bg-gradient-to-b from-[#2a5a3a] via-[#3a6a4a] to-[#2a5a3a]"></div>
+              
               <CardContent className="p-8 text-center">
                 <div className="relative mb-6">
                   <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
                     <reason.icon className="h-8 w-8 text-primary" />
                   </div>
-                  <Badge variant="secondary" className="absolute -top-2 -right-2">
+                  <Badge className="absolute -top-2 -right-2 bg-[#2a5a3a] hover:bg-[#224730] text-white border-0 font-medium">
                     {reason.badge}
                   </Badge>
                 </div>
