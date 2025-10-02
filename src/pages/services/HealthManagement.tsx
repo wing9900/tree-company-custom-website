@@ -64,7 +64,7 @@ const HealthManagement = () => {
                 Your mature trees are a priceless investment, but they are also complex organisms facing numerous threats in our region. Houston's intense summer heat, high humidity, and periods of drought or flood create a challenging environment where pests and diseases can flourish. A subtle change in a tree's appearance can often be the first sign of a serious health issue.
               </p>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                At {`{{COMPANY_NAME}}`}, our ISA Certified Arborists serve as "tree doctors," applying a scientific approach to tree health care based on ANSI A300 standards. We offer comprehensive solutions to diagnose, treat, and prevent problems, protecting your valuable trees for years to come.
+                At Leading Care Tree Service, our ISA Certified Arborists serve as "tree doctors," applying a scientific approach to tree health care based on ANSI A300 standards. We offer comprehensive solutions to diagnose, treat, and prevent problems, protecting your valuable trees for years to come.
               </p>
             </div>
           </div>

@@ -9,7 +9,7 @@ const About = () => {
       <section className="section-padding bg-primary text-primary-foreground">
         <div className="container-custom text-center">
           <h1 className="text-hero mb-6">
-            About {"{{COMPANY_NAME}}"}
+            About Leading Care Tree Service
           </h1>
           <p className="text-xl max-w-3xl mx-auto">
             Professional tree services with over 27 years of experience serving the Houston area. 
@@ -25,7 +25,7 @@ const About = () => {
             <div>
               <h2 className="text-section-title mb-6">Our Story</h2>
               <p className="text-muted-foreground mb-6 leading-relaxed">
-                Founded in 2009, {"{{COMPANY_NAME}}"} began as a small family-owned business with a simple mission: 
+                Founded in 2009, Leading Care Tree Service began as a small family-owned business with a simple mission: 
                 provide honest, professional tree services to homeowners and businesses throughout the Houston area.
               </p>
               <p className="text-muted-foreground mb-6 leading-relaxed">

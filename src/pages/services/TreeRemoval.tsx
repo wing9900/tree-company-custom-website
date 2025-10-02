@@ -72,7 +72,7 @@ const TreeRemoval = () => {
                 While our goal is always to preserve healthy trees, removal is often the only responsible choice to protect your home and family. A dead, diseased, or storm-damaged tree is a significant threat, especially in the Greater Houston area where severe weather can strike with little warning. Tree removal is the most hazardous aspect of arboriculture and demands qualified, insured professionals.
               </p>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                {`{{COMPANY_NAME}}`} specializes in safe and efficient tree removal throughout Houston, Katy, Sugar Land, and all of Harris County. Our operations are meticulously planned and executed in full compliance with ANSI Z133 safety standards, the industry's benchmark for safety, ensuring your project is completed without incident.
+                Leading Care Tree Service specializes in safe and efficient tree removal throughout Houston, Katy, Sugar Land, and all of Harris County. Our operations are meticulously planned and executed in full compliance with ANSI Z133 safety standards, the industry's benchmark for safety, ensuring your project is completed without incident.
               </p>
             </div>
           </div>

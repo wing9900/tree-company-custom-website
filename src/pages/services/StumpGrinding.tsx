@@ -95,7 +95,7 @@ const StumpGrinding = () => {
                 After a tree removal, the remaining stump is an unsightly obstacle. In your Houston yard, it can be a stubborn tripping hazard, a nuisance to mow around, and an open invitation for pests like termites, fire ants, and roaches. Don't let an old stump compromise the safety and beauty of your landscape.
               </p>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                {`{{COMPANY_NAME}}`} provides professional stump grinding services that are fast, effective, and completely eliminate the problem. We use powerful, state-of-the-art equipment to make that stump disappear, allowing you to fully reclaim your outdoor space.
+                Leading Care Tree Service provides professional stump grinding services that are fast, effective, and completely eliminate the problem. We use powerful, state-of-the-art equipment to make that stump disappear, allowing you to fully reclaim your outdoor space.
               </p>
             </div>
           </div>

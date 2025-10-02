@@ -8,7 +8,7 @@ import { Label } from "@/components/ui/label";
 import { OptimizedImage } from "@/components/ui/optimized-image";
 import { Phone, Mail, MapPin, Clock, Star, Shield, Award, Send, User, Home } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import contactHeroImage from "@/assets/contact-hero-landscape.jpg";
+const contactHeroImage = "/assets/contact-hero-landscape.jpg";
 const Contact = () => {
   const {
     toast
@@ -68,7 +68,7 @@ const Contact = () => {
             <div className="text-center mb-12">
               <p className="text-lg mb-4 tracking-wide font-bold text-slate-100">Contact Us</p>
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-                {"{{COMPANY_NAME}}"}<br /> <br className="hidden sm:block" />
+                Leading Care Tree Service<br /> <br className="hidden sm:block" />
                 <span className="text-emergency">Your Tree Care Experts</span>
               </h1>
               <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
@@ -179,7 +179,7 @@ const Contact = () => {
                   <div>
                     <h3 className="text-xl font-semibold text-gray-900 mb-2">Address</h3>
                     <p className="text-gray-600 leading-relaxed">
-                      {"{{ADDRESS_LINE}}, {{CITY}}, {{STATE}} {{ZIP}}"}
+                      123 Main Street, Pasadena, TX 77506
                     </p>
                   </div>
                 </div>
@@ -191,8 +191,8 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="text-xl font-semibold text-gray-900 mb-2">Email</h3>
-                    <a href="mailto:{{EMAIL}}" className="text-gray-600 hover:text-primary transition-colors">
-                      {"{{EMAIL}}"}
+                    <a href="mailto:info@leadingcaretree.com" className="text-gray-600 hover:text-primary transition-colors">
+                      info@leadingcaretree.com
                     </a>
                   </div>
                 </div>
@@ -217,7 +217,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="text-xl font-semibold text-gray-900 mb-2">Hour of Operation</h3>
-                    <p className="text-gray-600">{"{{HOURS}}"}</p>
+                    <p className="text-gray-600">Monday - Friday: 7:00 AM - 6:00 PM<br />Saturday: 8:00 AM - 4:00 PM<br />Sunday: Emergency Only</p>
                   </div>
                 </div>
               </div>

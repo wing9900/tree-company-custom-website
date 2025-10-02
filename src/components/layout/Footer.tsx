@@ -113,7 +113,7 @@ const Footer = ({
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="lg:col-span-1">
-            <div className="text-2xl font-bold mb-4">{"{{COMPANY_NAME}}"}</div>
+            <div className="text-2xl font-bold mb-4">Leading Care Tree Service</div>
             <p className="text-primary-foreground/80 mb-6">
               Professional tree services with over 27 years of experience. Licensed, insured, and dedicated to keeping your property safe and beautiful.
             </p>
@@ -244,7 +244,7 @@ const Footer = ({
         <div className="container-custom py-6">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="text-sm text-primary-foreground/60 mb-4 md:mb-0">
-              © 2024 {"{{COMPANY_NAME}}"}. All rights reserved.
+              © 2024 Leading Care Tree Service. All rights reserved.
             </div>
             <div className="flex space-x-6 text-sm">
               <Link to="/privacy" className="text-primary-foreground/60 hover:text-primary-foreground">

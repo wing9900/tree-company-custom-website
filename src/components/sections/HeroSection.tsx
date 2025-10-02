@@ -2,9 +2,6 @@ import { Button } from "@/components/ui/button";
 import { CallButton } from "@/components/ui/call-button";
 import { Phone, Calendar } from "lucide-react";
 const heroImage = "/assets/Website_Background.webp";
-const licensedInsuredBadge = "/assets/b6487ebe-02dc-4ea5-b3fe-aa797a7b37d1.png";
-const isaArbortistBadge = "/assets/9399cb6f-2ffd-4ab1-b2c8-5019766af479.png";
-const fiveStarBadge = "/assets/be0e589b-9094-4e4f-8107-10a3c354efc0.png";
 const HeroSection = () => {
   return <section className="relative min-h-screen flex flex-col justify-start items-center overflow-hidden">
       {/* Background Image */}

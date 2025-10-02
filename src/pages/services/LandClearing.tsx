@@ -72,7 +72,7 @@ const LandClearing = () => {
                 Whether you're preparing a site for a new custom home in a developing area or reclaiming an overgrown part of your property, professional land clearing is the crucial first step. Clearing land in the Houston area requires powerful equipment, a strategic plan, and a deep understanding of how to manage our region's unique vegetation and soil.
               </p>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                {`{{COMPANY_NAME}}`} offers comprehensive land and lot clearing services for residential and commercial clients. We merge heavy-duty efficiency with the precision of ISA Certified Arborists to deliver a clean, build-ready site.
+                Leading Care Tree Service offers comprehensive land and lot clearing services for residential and commercial clients. We merge heavy-duty efficiency with the precision of ISA Certified Arborists to deliver a clean, build-ready site.
               </p>
             </div>
           </div>
