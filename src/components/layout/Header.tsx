@@ -48,7 +48,7 @@ const Header = () => {
           <div className="hidden md:flex items-center gap-6">
             <div className="flex items-center gap-2">
               <Phone className="h-4 w-4" />
-              <span>{"281-757-2938"}</span>
+              <span>{"123-456-7890"}</span>
             </div>
             <div className="flex items-center gap-2">
               <MapPin className="h-4 w-4" />
@@ -87,7 +87,7 @@ const Header = () => {
                   textShadow: '1.25px 1.25px 1.5px rgba(0,0,0,0.9)'
                 }}
               >
-                {"Gulf Coast Tree Removal"}
+                {"Leading Care Tree Service"}
               </div>
             </Link>
 

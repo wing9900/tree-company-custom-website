@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { CallButton } from "@/components/ui/call-button";
 import { Phone, Calendar } from "lucide-react";
-const heroImage = "/assets/Hero_Page_Image.webp";
+const heroImage = "/assets/Website_Background.webp";
 const licensedInsuredBadge = "/assets/b6487ebe-02dc-4ea5-b3fe-aa797a7b37d1.png";
 const isaArbortistBadge = "/assets/9399cb6f-2ffd-4ab1-b2c8-5019766af479.png";
 const fiveStarBadge = "/assets/be0e589b-9094-4e4f-8107-10a3c354efc0.png";
@@ -11,7 +11,7 @@ const HeroSection = () => {
       <div className="absolute inset-0 z-0 bg-green-900 sm:bg-green-900 md:bg-green-900 lg:bg-transparent xl:bg-transparent">
         <img 
           src={heroImage} 
-          alt="Professional tree service equipment - Gulf Coast Tree Removal truck with boom lift and wood chipper" 
+          alt="Professional tree service equipment - Leading Care Tree Service truck with boom lift and wood chipper" 
           className="w-full h-full object-contain object-center
             sm:object-cover sm:object-center
             md:object-cover md:object-center
@@ -22,7 +22,7 @@ const HeroSection = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 container-custom text-center text-white pt-10">
+      <div className="relative z-10 container-custom text-center text-white flex flex-col justify-center items-center min-h-screen">
         <div className="max-w-4xl mx-auto w-full px-4">
           {/* Main Headline */}
           <h1 className="text-hero mb-6 animate-slide-up" style={{textShadow: '2px 2px 4px rgba(0,0,0,0.8)'}}>
@@ -39,7 +39,7 @@ const HeroSection = () => {
           </p>
 
           {/* CTA Buttons - Positioned closer to text */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8 mt-[28rem] animate-scale-in">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8 animate-scale-in">
             <CallButton variant="cta" size="xl" className="text-lg" showIcon={false} style={{boxShadow: '0 4px 8px rgba(0,0,0,0.3)'}}>
               Call Now
             </CallButton>
