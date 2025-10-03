@@ -9,7 +9,7 @@ const HeroSection = () => {
         <img 
           src={heroImage} 
           alt="Professional tree service equipment - Leading Care Tree Service truck with boom lift and wood chipper" 
-          className="w-full h-full object-contain object-center
+          className="w-full h-full object-cover object-center
             sm:object-cover sm:object-center
             md:object-cover md:object-center
             lg:object-cover lg:object-center
@@ -19,7 +19,7 @@ const HeroSection = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 container-custom text-center text-white flex flex-col justify-center items-center min-h-screen">
+      <div className="relative z-10 container-custom text-center text-white flex flex-col justify-start items-center min-h-screen pt-36 sm:justify-center sm:pt-0">
         <div className="max-w-4xl mx-auto w-full px-4">
           {/* Main Headline */}
           <h1 className="text-hero mb-6 animate-slide-up" style={{textShadow: '2px 2px 4px rgba(0,0,0,0.8)'}}>
@@ -28,7 +28,7 @@ const HeroSection = () => {
           </h1>
 
           {/* Subheadline */}
-          <p className="text-xl md:text-2xl mb-8 text-white max-w-3xl mx-auto animate-slide-up">
+          <p className="text-lg sm:text-xl md:text-2xl mb-4 sm:mb-8 text-white max-w-3xl mx-auto animate-slide-up">
             <span className="text-white font-bold tracking-wide" style={{textShadow: '2px 2px 4px rgba(0,0,0,0.8)'}}>Expert tree trimming, removal, and emergency services.</span> 
             <span className="block mt-2 font-bold tracking-wide" style={{textShadow: '2px 2px 4px rgba(0,0,0,0.8)'}}>
               Same-day estimates • Free consultations • 27+ years experience
@@ -36,7 +36,7 @@ const HeroSection = () => {
           </p>
 
           {/* CTA Buttons - Positioned closer to text */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8 animate-scale-in">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-4 sm:mb-8 animate-scale-in">
             <CallButton variant="cta" size="xl" className="text-lg" showIcon={false} style={{boxShadow: '0 4px 8px rgba(0,0,0,0.3)'}}>
               Call Now
             </CallButton>
