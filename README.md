@@ -1,4 +1,4 @@
-# Gulf Coast Tree Removal Website
+# Leading Care Tree Service Website
 
 This is a professional tree service company website built with React + TypeScript + Vite.
 
