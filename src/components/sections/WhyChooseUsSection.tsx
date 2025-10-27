@@ -219,10 +219,10 @@ const WhyChooseUsSection = () => {
         <div className="mt-16">
           <div className="text-center mb-12">
             <h3 className="text-3xl font-bold mb-4">
-              What Our Clients Are Saying
+              What Our Clients Say
             </h3>
             <p className="text-muted-foreground max-w-2xl mx-auto mb-8">
-              Read real feedback from satisfied clients who trust us for exceptional tree and landscaping services.
+              We're proud to be the top-rated choice for exceptional tree service. See what your neighbors are saying.
             </p>
             
             {/* Google Rating */}

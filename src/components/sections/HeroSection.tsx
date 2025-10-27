@@ -29,7 +29,7 @@ const HeroSection = () => {
 
           {/* Subheadline */}
           <p className="text-lg sm:text-xl md:text-2xl mb-4 sm:mb-8 text-white max-w-3xl mx-auto animate-slide-up">
-            <span className="text-white font-bold tracking-wide" style={{textShadow: '2px 2px 4px rgba(0,0,0,0.8)'}}>Expert tree trimming, removal, and emergency services.</span> 
+            <span className="text-white font-bold tracking-wide" style={{textShadow: '2px 2px 4px rgba(0,0,0,0.8)'}}>Expert care from ISA Certified Arborists</span> 
             <span className="block mt-2 font-bold tracking-wide" style={{textShadow: '2px 2px 4px rgba(0,0,0,0.8)'}}>
               Same-day estimates • Free consultations • 27+ years experience
             </span>

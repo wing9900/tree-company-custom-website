@@ -54,7 +54,7 @@ const Header = () => {
               <MapPin className="h-4 w-4" />
               <span>{"Pasadena, TX"}</span>
             </div>
-            <div className="text-sm">
+            <div className="text-base">
               Licensed & Insured • Emergency Services Available 24/7
             </div>
           </div>
