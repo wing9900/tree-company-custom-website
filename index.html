@@ -39,7 +39,18 @@
  </script>
   <style>
      /* Adjust chatbot widget positioning for mobile only */
-     @media (max-width: 1024px) {
+     @media (max-width: 640px) {
+       [data-widget-id="68ddb449d44dbc329b84f9a2"],
+       [data-widget-id="68ddb449d44dbc329b84f9a2"] > *,
+       iframe[src*="leadconnectorhq.com"],
+       div[data-widget-id="68ddb449d44dbc329b84f9a2"] {
+         bottom: 70px !important;
+         right: 20px !important;
+         z-index: 20 !important;
+       }
+     }
+     /* Tablet and larger screens - keep original positioning */
+     @media (min-width: 641px) and (max-width: 1024px) {
        [data-widget-id="68ddb449d44dbc329b84f9a2"] {
          bottom: 50px !important;
          right: 50px !important;
