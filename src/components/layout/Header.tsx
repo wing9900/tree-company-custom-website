@@ -69,16 +69,21 @@ const Header = () => {
         <div className="container-custom">
           <div className="flex items-center justify-between py-4">
             {/* Logo */}
-            <Link to="/" className="flex items-center space-x-3" onClick={e => {
-            // If already on home page, scroll to top
-            if (location.pathname === '/') {
-              e.preventDefault();
-              window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-              });
-            }
-          }}>
+            <div 
+              className="flex items-center space-x-3 cursor-pointer" 
+              onClick={() => {
+                // If already on home page with no hash, scroll to top
+                if (location.pathname === '/' && !location.hash) {
+                  window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                  });
+                } else {
+                  // Navigate to home page
+                  navigate('/', { replace: false });
+                }
+              }}
+            >
               <div 
                 className="text-2xl font-bold tracking-wide text-orange-500"
                 style={{
@@ -89,7 +94,7 @@ const Header = () => {
               >
                 {"Leading Care Tree Service"}
               </div>
-            </Link>
+            </div>
 
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center space-x-8">

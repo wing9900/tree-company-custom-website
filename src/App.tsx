@@ -29,24 +29,83 @@ const queryClient = new QueryClient();
 const ScrollToTop = () => {
   const location = useLocation();
   
-  useEffect(() => {
-    // Handle services section scrolling
-    if (location.pathname === "/" && location.hash === "#services") {
-      const servicesElement = document.getElementById("services");
-      if (servicesElement) {
-        const headerElement = servicesElement.querySelector("h2");
-        if (headerElement) {
-          const headerRect = headerElement.getBoundingClientRect();
-          const absoluteTop = window.pageYOffset + headerRect.top;
-          window.scrollTo({ top: absoluteTop - 100, behavior: "smooth" });
-        }
+  // Function to scroll to hash element with retry logic
+  const scrollToHash = (hash: string) => {
+    let retryCount = 0;
+    const maxRetries = 40;
+    
+    const attemptScroll = () => {
+      const element = document.getElementById(hash);
+      if (element) {
+        const headerOffset = 100;
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+        window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+        return; // Success - stop retrying
       }
-      return;
+      
+      // Retry if element not found yet
+      if (retryCount < maxRetries) {
+        retryCount++;
+        setTimeout(attemptScroll, 100);
+      }
+    };
+    
+    attemptScroll();
+  };
+  
+  // Handle hash scrolling on route/path changes
+  useEffect(() => {
+    // Check both window.location.hash (actual browser URL) and location.hash (React Router)
+    const hash = window.location.hash || location.hash;
+    
+    if (hash && location.pathname === "/") {
+      const hashValue = hash.substring(1); // Remove the #
+      
+      // Try scrolling after a short delay to ensure DOM is ready
+      const timeoutId = setTimeout(() => {
+        scrollToHash(hashValue);
+      }, 200);
+      
+      return () => clearTimeout(timeoutId);
     }
     
-    // Scroll to top for all other page navigation (cross-page only)
-    window.scrollTo(0, 0);
+    // Scroll to top for page navigation without hash (including when navigating to home)
+    if (!hash) {
+      window.scrollTo(0, 0);
+    }
   }, [location.pathname, location.hash]);
+  
+  // Handle initial page load with hash in URL
+  useEffect(() => {
+    if (window.location.hash && location.pathname === "/") {
+      const hash = window.location.hash.substring(1);
+      
+      // Wait for page to fully load before attempting scroll
+      const handleLoad = () => {
+        setTimeout(() => scrollToHash(hash), 300);
+      };
+      
+      if (document.readyState === 'complete') {
+        handleLoad();
+      } else {
+        window.addEventListener('load', handleLoad, { once: true });
+      }
+    }
+  }, []); // Only run on mount
+  
+  // Handle native hashchange events (for browser back/forward or direct hash changes)
+  useEffect(() => {
+    const handleHashChange = () => {
+      if (window.location.hash && location.pathname === "/") {
+        const hash = window.location.hash.substring(1);
+        setTimeout(() => scrollToHash(hash), 100);
+      }
+    };
+    
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, [location.pathname]);
   
   return null;
 };
