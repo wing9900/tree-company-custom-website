@@ -298,8 +298,8 @@ const WhyChooseUsSection = () => {
                   </Card>
                 </CarouselItem>)}
             </CarouselContent>
-            <CarouselPrevious className="left-0" />
-            <CarouselNext className="right-0" />
+            <CarouselPrevious className="-left-6 hidden md:flex bg-white/90 hover:bg-white shadow-md border-gray-200" />
+            <CarouselNext className="-right-6 hidden md:flex bg-white/90 hover:bg-white shadow-md border-gray-200" />
           </Carousel>
         </div>
       </div>
