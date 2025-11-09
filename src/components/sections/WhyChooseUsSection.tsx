@@ -1,5 +1,4 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { MapPin, Heart, Clock, Leaf, Calendar, Home, Pencil, MessageSquare, Wrench, Star, TreePine, Shield, ChevronLeft, ChevronRight } from "lucide-react";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { useEffect, useRef, useState } from "react";
@@ -199,9 +198,6 @@ const WhyChooseUsSection = () => {
                   <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
                     <reason.icon className="h-8 w-8 text-primary" />
                   </div>
-                  <Badge className="absolute -top-2 -right-2 bg-[#2a5a3a] hover:bg-[#224730] text-white border-0 font-medium">
-                    {reason.badge}
-                  </Badge>
                 </div>
                 
                 <h3 className="text-card-title mb-4">

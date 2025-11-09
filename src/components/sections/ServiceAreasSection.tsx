@@ -1,7 +1,5 @@
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "react-router-dom";
-import { MapPin, Clock, Phone } from "lucide-react";
+import { MapPin } from "lucide-react";
 
 const ServiceAreasSection = () => {
   const serviceAreas = [
@@ -26,11 +24,11 @@ const ServiceAreasSection = () => {
   ];
 
   return (
-    <section className="section-padding bg-muted/30">
+    <section id="service-areas" className="section-padding bg-muted/30">
       <div className="container-custom">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <h2 className="text-section-title mb-4">
+          <h2 className="text-section-title mb-4" data-scroll-target data-scroll-adjust="-20">
             Service Areas
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
@@ -55,29 +53,6 @@ const ServiceAreasSection = () => {
           ))}
         </div>
 
-        {/* Coverage Map Placeholder */}
-        <div className="bg-card rounded-2xl p-8 text-center shadow-soft">
-          <h3 className="text-xl font-bold mb-4">
-            Complete Houston Metro Coverage
-          </h3>
-          <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-            Serving Harris County and Fort Bend County. Don't see your area? Call us - we likely serve your location!
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="accent" asChild>
-              <Link to="/service-areas">
-                View All Service Areas
-              </Link>
-            </Button>
-            <Button variant="accent" asChild>
-              <a href="tel:+19163822904">
-                <Phone className="h-4 w-4" />
-                Call to Confirm Coverage
-              </a>
-            </Button>
-          </div>
-        </div>
       </div>
     </section>
   );

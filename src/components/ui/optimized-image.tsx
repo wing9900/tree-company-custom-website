@@ -14,6 +14,7 @@ interface OptimizedImageProps {
   onError?: () => void;
   blur?: boolean;
   quality?: number;
+  fit?: "cover" | "contain";
 }
 
 const OptimizedImage = ({
@@ -28,7 +29,8 @@ const OptimizedImage = ({
   onLoad,
   onError,
   blur = true,
-  quality = 85
+  quality = 85,
+  fit = "cover"
 }: OptimizedImageProps) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isInView, setIsInView] = useState(!lazy || priority);
@@ -110,7 +112,8 @@ const OptimizedImage = ({
             height={height}
             loading={priority ? "eager" : "lazy"}
             className={cn(
-              "w-full h-full object-cover transition-opacity duration-300",
+              "w-full h-full transition-opacity duration-300",
+              fit === "contain" ? "object-contain" : "object-cover",
               isLoaded ? "opacity-100" : "opacity-0",
               hasError && "opacity-50"
             )}

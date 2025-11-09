@@ -29,6 +29,22 @@ const queryClient = new QueryClient();
 const ScrollToTop = () => {
   const location = useLocation();
   
+  const getHeaderOffset = () => {
+    const stickyHeader = document.querySelector<HTMLElement>(".sticky-header");
+    const topBar = document.getElementById("top-contact-bar");
+    const headerHeight = stickyHeader?.offsetHeight ?? 0;
+    const topBarHeight = topBar?.offsetHeight ?? 0;
+    return headerHeight + topBarHeight + 8; // small buffer
+  };
+  const getScrollTarget = (element: HTMLElement) => {
+    return element.querySelector<HTMLElement>("[data-scroll-target]") ?? element;
+  };
+  const getScrollAdjustment = (element: HTMLElement) => {
+    const adjust = element.getAttribute("data-scroll-adjust");
+    const value = adjust ? parseInt(adjust, 10) : 0;
+    return isNaN(value) ? 0 : value;
+  };
+
   // Function to scroll to hash element with retry logic
   const scrollToHash = (hash: string) => {
     let retryCount = 0;
@@ -37,8 +53,9 @@ const ScrollToTop = () => {
     const attemptScroll = () => {
       const element = document.getElementById(hash);
       if (element) {
-        const headerOffset = 100;
-        const elementPosition = element.getBoundingClientRect().top;
+        const targetElement = getScrollTarget(element);
+        const headerOffset = Math.max(getHeaderOffset() - getScrollAdjustment(targetElement), 0);
+        const elementPosition = targetElement.getBoundingClientRect().top;
         const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
         window.scrollTo({ top: offsetPosition, behavior: "smooth" });
         return; // Success - stop retrying

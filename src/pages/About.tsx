@@ -41,6 +41,7 @@ const About = () => {
                 </Button>
                 <Button variant="cta" asChild>
                   <Link to="/contact">
+                    <Calendar className="h-5 w-5" />
                     Get Free Estimate
                   </Link>
                 </Button>

@@ -1,12 +1,7 @@
-import Layout from "@/components/layout/Layout";
-import ServiceAreasSection from "@/components/sections/ServiceAreasSection";
+import { Navigate } from "react-router-dom";
 
 const ServiceAreas = () => {
-  return (
-    <Layout>
-      <ServiceAreasSection />
-    </Layout>
-  );
+  return <Navigate to="/#service-areas" replace />;
 };
 
 export default ServiceAreas;

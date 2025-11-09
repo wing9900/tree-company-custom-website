@@ -1,11 +1,13 @@
+import { useCallback, useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { OptimizedImage } from "@/components/ui/optimized-image";
 import { Link } from "react-router-dom";
-import { Eye, ArrowRight, Image as ImageIcon, MapPin } from "lucide-react";
+import { Eye, Image as ImageIcon, MapPin, Phone, Calendar, X, ChevronLeft, ChevronRight } from "lucide-react";
 
 const GalleryPreview = () => {
+  const [activeItemIndex, setActiveItemIndex] = useState<number | null>(null);
+
   const galleryItems = [
     {
       title: "Professional Trimming",
@@ -67,6 +69,56 @@ const GalleryPreview = () => {
     }
   ];
 
+  const totalItems = galleryItems.length;
+
+  const openModal = useCallback((index: number) => {
+    setActiveItemIndex(index);
+  }, []);
+
+  const closeModal = useCallback(() => {
+    setActiveItemIndex(null);
+  }, []);
+
+  const showPrev = useCallback(() => {
+    setActiveItemIndex(prev => {
+      if (prev === null) return prev;
+      return (prev - 1 + totalItems) % totalItems;
+    });
+  }, [totalItems]);
+
+  const showNext = useCallback(() => {
+    setActiveItemIndex(prev => {
+      if (prev === null) return prev;
+      return (prev + 1) % totalItems;
+    });
+  }, [totalItems]);
+
+  const activeItem = activeItemIndex !== null ? galleryItems[activeItemIndex] : null;
+
+  useEffect(() => {
+    if (activeItemIndex === null) return;
+
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        closeModal();
+      } else if (event.key === "ArrowLeft") {
+        showPrev();
+      } else if (event.key === "ArrowRight") {
+        showNext();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = originalOverflow;
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [activeItemIndex, closeModal, showNext, showPrev]);
+
   return (
     <section className="section-padding bg-background">
       <div className="container-custom">
@@ -88,68 +140,116 @@ const GalleryPreview = () => {
         {/* Gallery Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
           {galleryItems.map((item, index) => (
-            <Dialog key={item.title}>
-              <DialogTrigger asChild>
-                <Card 
-                  className="group overflow-hidden hover-lift animate-fade-in cursor-pointer border-0"
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                >
-                  <div className="relative overflow-hidden">
-                    <OptimizedImage
-                      src={item.image}
-                      alt={`${item.title} - ${item.description}`}
-                      className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
-                      lazy={true}
-                      aspectRatio="16/9"
-                    />
-                    
-                    {/* Overlay */}
-                    <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                      <div className="text-center text-white">
-                        <Eye className="h-8 w-8 mx-auto mb-2" />
-                        <div className="text-sm font-medium">View Details</div>
-                      </div>
-                    </div>
-                    
-                    {/* Category Badge */}
-                    <div className="absolute top-4 left-4">
-                      <span className="bg-primary text-primary-foreground px-3 py-1 rounded-full text-xs font-semibold">
-                        {item.category}
-                      </span>
+            <button
+              key={item.title}
+              type="button"
+              className="w-full text-left bg-transparent border-0 p-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+              onClick={() => openModal(index)}
+            >
+              <Card 
+                className="group overflow-hidden hover-lift animate-fade-in cursor-pointer border-0"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <div className="relative overflow-hidden">
+                  <OptimizedImage
+                    src={item.image}
+                    alt={`${item.title} - ${item.description}`}
+                    className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
+                    lazy={true}
+                    aspectRatio="16/9"
+                  />
+                  
+                  {/* Overlay */}
+                  <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <div className="text-center text-white">
+                      <Eye className="h-8 w-8 mx-auto mb-2" />
+                      <div className="text-sm font-medium">View Details</div>
                     </div>
                   </div>
                   
-                  <div className="p-6">
-                    <h3 className="text-card-title mb-2">{item.title}</h3>
-                    <p className="text-sm text-muted-foreground">{item.description}</p>
-                  </div>
-                </Card>
-              </DialogTrigger>
-              <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto border-0" style={{ border: 'none', boxShadow: 'none' }}>
-                <DialogHeader>
-                  <DialogTitle className="flex items-center gap-2">
-                    <MapPin className="h-5 w-5 text-primary" />
-                    {item.project}
-                  </DialogTitle>
-                </DialogHeader>
-                <div className="mt-4" style={{ border: 'none', padding: '0', margin: '16px 0 0 0' }}>
-                  <div className="w-full" style={{ border: 'none', boxShadow: 'none', outline: 'none', background: 'transparent' }}>
-                    <OptimizedImage
-                      src={item.image}
-                      alt={`${item.title} - ${item.description}`}
-                      className="w-full h-auto max-h-[70vh] object-contain mb-6"
-                      lazy={false}
-                      priority={false}
-                    />
-                  </div>
-                  <DialogDescription className="text-base leading-relaxed whitespace-pre-line">
-                    {item.detailedDescription}
-                  </DialogDescription>
                 </div>
-              </DialogContent>
-            </Dialog>
+                
+                <div className="p-6">
+                  <h3 className="text-card-title mb-2">{item.title}</h3>
+                  <p className="text-sm text-muted-foreground">{item.description}</p>
+                </div>
+              </Card>
+            </button>
           ))}
         </div>
+
+        {activeItemIndex !== null && activeItem && (
+          <div
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
+            onClick={closeModal}
+          >
+            <div
+              className="relative w-full max-w-4xl max-h-[90vh] overflow-hidden rounded-2xl bg-zinc-950/95 text-white shadow-2xl border border-white/10 flex flex-col"
+              onClick={(event) => event.stopPropagation()}
+            >
+              <button
+                type="button"
+                onClick={closeModal}
+                className="absolute right-4 top-4 z-20 rounded-full bg-primary text-primary-foreground p-2 shadow-md transition-colors hover:bg-primary/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+              >
+                <X className="h-4 w-4" />
+                <span className="sr-only">Close</span>
+              </button>
+
+              <div className="relative w-full h-[55vh] sm:h-[60vh] bg-black flex-shrink-0">
+                <OptimizedImage
+                  src={activeItem.image}
+                  alt={`${activeItem.title} - ${activeItem.description}`}
+                  className="w-full h-full"
+                  lazy={false}
+                  priority={true}
+                  fit="contain"
+                  blur={false}
+                />
+
+                {totalItems > 1 && (
+                  <>
+                    <button
+                      type="button"
+                      onClick={(event) => {
+                        event.stopPropagation();
+                        showPrev();
+                      }}
+                      className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full bg-white/15 p-2 text-white transition hover:bg-white/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                    >
+                      <ChevronLeft className="h-6 w-6" />
+                      <span className="sr-only">Previous image</span>
+                    </button>
+                    <button
+                      type="button"
+                      onClick={(event) => {
+                        event.stopPropagation();
+                        showNext();
+                      }}
+                      className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full bg-white/15 p-2 text-white transition hover:bg-white/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                    >
+                      <ChevronRight className="h-6 w-6" />
+                      <span className="sr-only">Next image</span>
+                    </button>
+                  </>
+                )}
+              </div>
+
+              <div className="px-6 py-6 space-y-3 overflow-y-auto flex-1">
+                <div className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-white">
+                  <MapPin className="h-4 w-4" />
+                  {activeItem.project ?? activeItem.title}
+                </div>
+                {activeItem.location && (
+                  <div className="text-sm text-white/80">{activeItem.location}</div>
+                )}
+                <p className="text-sm text-white/80 whitespace-pre-line">
+                  {activeItem.detailedDescription}
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Before/After Section */}
         <div className="bg-muted/50 rounded-2xl p-8 mb-12">
@@ -187,16 +287,16 @@ const GalleryPreview = () => {
         {/* CTA Section */}
         <div className="text-center">
           <div className="inline-flex flex-col sm:flex-row gap-4">
-            <Button variant="accent" size="lg" asChild>
-              <Link to="/gallery">
-                <Eye className="h-5 w-5" />
-                View Full Gallery
-                <ArrowRight className="h-4 w-4" />
-              </Link>
+            <Button variant="accent" size="lg" asChild className="[&_svg]:!h-5 [&_svg]:!w-5">
+              <a href="tel:+11234567890">
+                <Phone />
+                Call Now
+              </a>
             </Button>
-            <Button variant="accent" size="lg" asChild>
+            <Button variant="accent" size="lg" asChild className="[&_svg]:!h-5 [&_svg]:!w-5">
               <Link to="/contact">
-                Get Your Free Estimate
+                <Calendar />
+                Get Free Estimate
               </Link>
             </Button>
           </div>

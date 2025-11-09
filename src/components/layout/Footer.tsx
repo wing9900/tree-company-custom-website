@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
 import { Phone, Mail, MapPin, Clock, Star, Shield, Award } from "lucide-react";
 
 const Footer = ({
@@ -81,33 +80,6 @@ const Footer = ({
 
   return (
     <footer className="bg-primary text-primary-foreground">
-      {/* CTA Section */}
-      {!hideCTA && (
-        <div className="border-b border-primary-foreground/20">
-          <div className="container-custom section-padding-sm">
-            <div className="text-center">
-              <h2 className="text-section-title mb-4">Ready to Work with Houston's Most Trusted Tree Service?</h2>
-              <p className="text-lg text-primary-foreground/80 mb-6 max-w-2xl mx-auto">
-                Contact us today for a free consultation and estimate. We're here to help with all your tree care needs.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button variant="accent" size="xl" asChild>
-                  <a href="tel:+11234567890">
-                    <Phone className="h-5 w-5" />
-                    Call Now
-                  </a>
-                </Button>
-                <Button variant="accent" size="xl" asChild>
-                  <Link to="/contact">
-                    Get Free Estimate
-                  </Link>
-                </Button>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-
       {/* Main Footer Content */}
       <div className="container-custom section-padding">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -208,7 +180,7 @@ const Footer = ({
                 </li>
               ))}
             </ul>
-            <Link to="/service-areas" className="text-sm text-primary-foreground/60 hover:text-primary-foreground transition-colors inline-block mt-2">
+            <Link to="/#service-areas" className="text-sm text-primary-foreground/60 hover:text-primary-foreground transition-colors inline-block mt-2">
               View All Areas →
             </Link>
           </div>
@@ -228,12 +200,9 @@ const Footer = ({
 
             <div className="mt-6">
               <h4 className="text-sm font-semibold mb-2">Emergency Services</h4>
-              <p className="text-sm text-primary-foreground/80 mb-3">
+              <p className="text-sm text-primary-foreground/80">
                 24/7 emergency storm response available
               </p>
-              <Button variant="cta" size="sm" asChild>
-                <a href="tel:+11234567890">Emergency Call</a>
-              </Button>
             </div>
           </div>
         </div>

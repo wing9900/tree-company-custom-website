@@ -1,7 +1,6 @@
 import Layout from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Link } from "react-router-dom";
 import { Zap, Clock, FileText, Settings, Shield, Phone, AlertTriangle } from "lucide-react";
 
 const Emergency = () => {
@@ -51,11 +50,6 @@ const Emergency = () => {
                   <AlertTriangle className="mr-2 h-6 w-6" />
                   EMERGENCY HOTLINE
                 </a>
-              </Button>
-              <Button size="xl" variant="default" asChild>
-                <Link to="/contact">
-                  Request Emergency Service
-                </Link>
               </Button>
             </div>
           </div>

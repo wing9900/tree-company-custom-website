@@ -8,6 +8,31 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+  const getHeaderOffset = () => {
+    const stickyHeader = document.querySelector<HTMLElement>(".sticky-header");
+    const topBar = document.getElementById("top-contact-bar");
+    const headerHeight = stickyHeader?.offsetHeight ?? 0;
+    const topBarHeight = topBar?.offsetHeight ?? 0;
+    return headerHeight + topBarHeight + 8;
+  };
+  const getScrollAdjustment = (element: HTMLElement) => {
+    const adjust = element.getAttribute("data-scroll-adjust");
+    const value = adjust ? parseInt(adjust, 10) : 0;
+    return isNaN(value) ? 0 : value;
+  };
+  const scrollToSection = (id: string) => {
+    const section = document.getElementById(id);
+    if (!section) return;
+    const target = section.querySelector<HTMLElement>("[data-scroll-target]") ?? section;
+    const rect = target.getBoundingClientRect();
+    const absoluteTop = window.pageYOffset + rect.top;
+    const effectiveOffset = Math.max(getHeaderOffset() - getScrollAdjustment(target), 0);
+    const targetOffset = Math.max(absoluteTop - effectiveOffset, 0);
+    window.scrollTo({
+      top: targetOffset,
+      behavior: "smooth"
+    });
+  };
   const isActive = (path: string) => {
     // If we have a hash in the URL, only hash-based navigation should be active
     if (location.hash) {
@@ -33,7 +58,7 @@ const Header = () => {
     href: "/gallery"
   }, {
     name: "Areas We Serve",
-    href: "/service-areas"
+    href: "/#service-areas"
   }, {
     name: "Blog",
     href: "/blog"
@@ -43,7 +68,7 @@ const Header = () => {
   }];
   return <>
       {/* Top Contact Bar */}
-      <div className="bg-primary text-primary-foreground py-2 px-4 text-base">
+      <div id="top-contact-bar" className="bg-primary text-primary-foreground py-2 px-4 text-base">
         <div className="container-custom flex justify-between items-center">
           <div className="hidden md:flex items-center gap-6">
             <div className="flex items-center gap-2">
@@ -65,8 +90,8 @@ const Header = () => {
       </div>
 
       {/* Main Header */}
-      <header className="bg-background shadow-soft sticky top-0 z-50">
-        <div className="container-custom">
+      <header className="bg-background shadow-soft sticky top-0 z-50 sticky-header">
+        <div className="container-custom lg:px-4">
           <div className="flex items-center justify-between py-4">
             {/* Logo */}
             <div 
@@ -105,18 +130,7 @@ const Header = () => {
                   if (location.pathname !== '/') {
                     navigate('/#services');
                   } else {
-                    const servicesElement = document.getElementById('services');
-                    if (servicesElement) {
-                      const headerElement = servicesElement.querySelector("h2");
-                      if (headerElement) {
-                        const headerRect = headerElement.getBoundingClientRect();
-                        const absoluteTop = window.pageYOffset + headerRect.top;
-                        window.scrollTo({
-                          top: absoluteTop - 100,
-                          behavior: "smooth"
-                        });
-                      }
-                    }
+                    scrollToSection('services');
                   }
                 }} className={`text-base font-medium transition-colors hover:text-primary ${isActive(item.href) ? "text-primary border-b-2 border-primary" : "text-gray-700"}`}>
                       {item.name}
@@ -138,8 +152,8 @@ const Header = () => {
             </nav>
 
             {/* CTA Buttons - Desktop */}
-            <div className="hidden lg:flex items-center space-x-3">
-              <CallButton variant="cta" size="sm" showIcon={false} className="shadow-lg">
+            <div className="hidden lg:flex items-center space-x-3 lg:ml-6">
+              <CallButton variant="cta" size="sm" showIcon={true} className="shadow-lg">
                 Call Now
               </CallButton>
               <Button variant="cta" size="sm" asChild className="shadow-lg">
@@ -160,38 +174,29 @@ const Header = () => {
             </div>
 
             {/* Mobile Menu Button */}
-            <Sheet open={isOpen} onOpenChange={setIsOpen}>
+            <Sheet open={isOpen} onOpenChange={setIsOpen} modal={false}>
               <SheetTrigger asChild className="lg:hidden">
                 <Button variant="outline" size="icon">
                   <Menu className="h-4 w-4" />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-300">
+              <SheetContent
+                side="right"
+                className="w-300 [&_[data-radix-sheet-close]]:text-gray-950 [&_[data-radix-sheet-close]]:hover:text-gray-800 [&_[data-radix-sheet-close]_svg]:h-7 [&_[data-radix-sheet-close]_svg]:w-7"
+                onOpenAutoFocus={event => event.preventDefault()}
+              >
                 <div className="flex flex-col space-y-4 mt-8">
                   {navigationItems.map(item => {
                   if (item.href === "/#services") {
-                    return <button key={item.name} onClick={e => {
-                      e.preventDefault();
+                    return <Link key={item.name} to={item.href} onClick={e => {
                       setIsOpen(false);
-                      if (location.pathname !== '/') {
-                        navigate('/#services');
-                      } else {
-                        const servicesElement = document.getElementById('services');
-                        if (servicesElement) {
-                          const headerElement = servicesElement.querySelector("h2");
-                          if (headerElement) {
-                            const headerRect = headerElement.getBoundingClientRect();
-                            const absoluteTop = window.pageYOffset + headerRect.top;
-                            window.scrollTo({
-                              top: absoluteTop - 100,
-                              behavior: "smooth"
-                            });
-                          }
-                        }
+                      if (location.pathname === '/') {
+                        e.preventDefault();
+                        scrollToSection('services');
                       }
-                    }} className={`text-base font-medium transition-colors hover:text-primary text-left ${isActive(item.href) ? "text-primary" : "text-gray-800"}`}>
+                    }} className={`text-[1.02rem] font-medium transition-colors hover:text-primary text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-white ${isActive(item.href) ? "text-primary" : "text-gray-800"}`}>
                           {item.name}
-                        </button>;
+                        </Link>;
                   }
                   return <Link key={item.name} to={item.href} onClick={e => {
                     setIsOpen(false);
@@ -203,16 +208,16 @@ const Header = () => {
                         behavior: "smooth"
                       });
                     }
-                  }} className={`text-base font-medium transition-colors hover:text-primary text-left ${isActive(item.href) ? "text-primary" : "text-gray-800"}`}>
+                  }} className={`text-[1.02rem] font-medium transition-colors hover:text-primary text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-white ${isActive(item.href) ? "text-primary" : "text-gray-800"}`}>
                         {item.name}
                       </Link>;
                 })}
                   
                   <div className="pt-4 border-t space-y-3">
-                    <CallButton variant="cta" className="w-full shadow-lg" showIcon={false}>
+                    <CallButton variant="cta" className="w-full shadow-lg text-[1.01rem]" showIcon={false}>
                       Call Now
                     </CallButton>
-                    <Button variant="cta" className="w-full shadow-lg" asChild>
+                    <Button variant="cta" className="w-full shadow-lg text-[1.01rem]" asChild>
                       <Link to="/contact" onClick={e => {
                       setIsOpen(false);
                       // If already on contact page, scroll to top

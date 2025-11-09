@@ -53,11 +53,11 @@ const ServicesSection = () => {
     link: "/services/health-management",
     features: ["Tree health and risk assessments", "Pest and disease diagnosis and treatment", "Fertilization and soil management", "Root zone management"]
   }];
-  return <section id="services" className="section-padding bg-muted/30">
-      <div className="container-custom">
+  return <section id="services" className="py-16 md:py-24 bg-muted/30">
+      <div className="container-custom" id="services-container">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-section-title mb-4">Complete Tree Care Services</h2>
+          <h2 className="text-section-title mb-4" data-scroll-target>Complete Tree Care Services</h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
             From routine maintenance to emergency response, we provide comprehensive tree care services 
             throughout {"{{SERVICE_AREAS}}"} with professional expertise and reliable results.

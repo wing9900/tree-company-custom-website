@@ -5,7 +5,7 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { OptimizedImage } from "@/components/ui/optimized-image";
-import { ArrowLeft, Eye, X, ChevronLeft, ChevronRight, Image as ImageIcon } from "lucide-react";
+import { ArrowLeft, Eye, X, ChevronLeft, ChevronRight, Image as ImageIcon, Calendar, Phone } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Gallery = () => {
@@ -86,6 +86,15 @@ const Gallery = () => {
     ? galleryImages 
     : galleryImages.filter(img => img.category === selectedFilter);
 
+  const activeImage = selectedImage !== null ? filteredImages[selectedImage] : null;
+  const overlayPaddingClasses =
+    activeImage && activeImage.id === 6
+      ? "pt-8 pb-16 sm:pt-10 sm:pb-8"
+      : "pt-8 pb-16";
+
+  const overlayContentOffsetClasses =
+    activeImage && activeImage.id === 6 ? "mb-[13%] sm:mb-0" : "mb-[13%] sm:mb-0";
+
   const openModal = (index: number) => {
     setSelectedImage(index);
   };
@@ -115,15 +124,6 @@ const Gallery = () => {
       <div className="container-custom section-padding">
         {/* Header */}
         <header className="text-center mb-12">
-          <div className="flex items-center justify-center mb-4">
-            <Link to="/">
-              <Button variant="ghost" className="gap-2">
-                <ArrowLeft className="h-4 w-4" />
-                Back to Home
-              </Button>
-            </Link>
-          </div>
-          
           <div className="inline-flex items-center gap-2 bg-success/10 text-success px-4 py-2 rounded-full text-sm font-semibold mb-4">
             <ImageIcon className="h-4 w-4" />
             Professional Gallery
@@ -179,12 +179,6 @@ const Gallery = () => {
                   </div>
                 </div>
                 
-                {/* Category Badge */}
-                <div className="absolute top-3 left-3">
-                  <Badge className="bg-primary text-primary-foreground px-2 py-1 text-xs font-semibold">
-                    {image.category}
-                  </Badge>
-                </div>
               </div>
               
               <div className="p-4">
@@ -197,15 +191,15 @@ const Gallery = () => {
         </div>
 
         {/* Modal for Image Viewing */}
-        {selectedImage !== null && (
+        {selectedImage !== null && activeImage && (
           <Dialog open={selectedImage !== null} onOpenChange={closeModal}>
-            <DialogContent className="max-w-4xl max-h-[90vh] p-0 bg-black/95 border-0">
+            <DialogContent className="w-screen h-screen max-w-none p-0 bg-black/95 border-0 sm:max-w-4xl sm:h-auto">
               <div className="relative w-full h-full">
                 {/* Close Button */}
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="absolute top-4 right-4 z-50 text-white hover:bg-white/20"
+                  className="absolute top-[22%] sm:top-4 right-4 z-50 text-white hover:bg-white/20"
                   onClick={closeModal}
                 >
                   <X className="h-6 w-6" />
@@ -231,10 +225,10 @@ const Gallery = () => {
                 </Button>
 
                 {/* Image */}
-                <div className="flex items-center justify-center w-full h-[85vh] p-4">
+                <div className="flex items-center justify-center w-full h-full sm:h-[85vh] p-4">
                   <OptimizedImage
-                    src={filteredImages[selectedImage].image}
-                    alt={filteredImages[selectedImage].title}
+                    src={activeImage.image}
+                    alt={activeImage.title}
                     className="max-w-full max-h-full object-contain"
                     lazy={false}
                     priority={false}
@@ -242,15 +236,12 @@ const Gallery = () => {
                 </div>
 
                 {/* Image Info */}
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6 text-white">
-                  <div className="flex items-center gap-2 mb-2">
-                    <Badge className="bg-primary text-primary-foreground">
-                      {filteredImages[selectedImage].category}
-                    </Badge>
+                <div className={`absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent px-4 sm:px-6 sm:p-6 text-white ${overlayPaddingClasses} flex flex-col justify-end`}>
+                  <div className={overlayContentOffsetClasses}>
+                    <h3 className="text-xl font-semibold mb-1">{activeImage.title}</h3>
+                    <p className="text-sm text-white/80 mb-2">{activeImage.location}</p>
+                    <p className="text-sm text-white/70">{activeImage.description}</p>
                   </div>
-                  <h3 className="text-xl font-semibold mb-1">{filteredImages[selectedImage].title}</h3>
-                  <p className="text-sm text-white/80 mb-2">{filteredImages[selectedImage].location}</p>
-                  <p className="text-sm text-white/70">{filteredImages[selectedImage].description}</p>
                 </div>
               </div>
             </DialogContent>
@@ -289,14 +280,16 @@ const Gallery = () => {
             Get a free consultation and see how we can enhance your landscape.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button size="lg" className="shadow-md hover:shadow-lg hover:bg-primary/80 [&_svg]:!h-5 [&_svg]:!w-5" asChild>
+              <a href="tel:+11234567890">
+                <Phone />
+                Call Now
+              </a>
+            </Button>
             <Link to="/contact">
-              <Button size="lg" className="shadow-md hover:shadow-lg hover:bg-primary/80">
+              <Button size="lg" className="shadow-md hover:shadow-lg hover:bg-primary/80 [&_svg]:!h-5 [&_svg]:!w-5">
+                <Calendar />
                 Get Free Estimate
-              </Button>
-            </Link>
-            <Link to="/">
-              <Button size="lg" className="shadow-md hover:shadow-lg hover:bg-primary/80">
-                Learn More About Our Services
               </Button>
             </Link>
           </div>

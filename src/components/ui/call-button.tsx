@@ -35,12 +35,15 @@ export const CallButton = ({
   };
   const baseClasses = "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium ring-offset-background transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 [&_svg]:shrink-0 cursor-pointer";
   
+  // Icon size based on button size
+  const iconSize = size === "xl" ? "h-6 w-6" : size === "lg" ? "h-5 w-5" : "h-4 w-4";
+  
   return (
     <a
       href="tel:{{Phone Number}}"
       className={cn(baseClasses, variantClasses[variant], sizeClasses[size], className)}
     >
-      {showIcon && <Phone className="h-4 w-4" />}
+      {showIcon && <Phone className={iconSize} />}
       {children}
     </a>
   );

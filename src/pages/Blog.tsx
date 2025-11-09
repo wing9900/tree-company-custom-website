@@ -230,15 +230,7 @@ const Blog = () => {
       <div className="container-custom section-padding">
         {/* Header */}
         <header className="text-center mb-12">
-          <div className="flex items-center justify-center mb-4">
-            <Link to="/">
-              <Button variant="ghost" className="gap-2">
-                <ArrowLeft className="h-4 w-4" />
-                Back to Home
-              </Button>
-            </Link>
-          </div>
-          <h1 className="text-section-title font-bold text-foreground mb-4">
+          <h1 className="text-section-title font-bold text-foreground mb-4 text-4xl sm:text-5xl">
             Tree Care Blog
           </h1>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -252,7 +244,7 @@ const Blog = () => {
             <article key={post.id} className="max-w-4xl mx-auto">
               {/* Centered Category Badge */}
               <div className="flex justify-center mb-6">
-                <Badge variant="secondary" className="bg-primary/10 text-primary border-primary/20">
+                <Badge variant="secondary" className="bg-primary/10 text-primary border-primary/20 px-4 py-2 text-sm font-semibold rounded-full">
                   {post.category}
                 </Badge>
               </div>

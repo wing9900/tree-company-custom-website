@@ -6,7 +6,7 @@ import {
 } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { HelpCircle, Phone } from "lucide-react";
+import { HelpCircle, Phone, Calendar } from "lucide-react";
 
 const FAQSection = () => {
   const faqs = [
@@ -102,6 +102,7 @@ const FAQSection = () => {
               </Button>
               <Button variant="secondary" size="lg" asChild>
                 <Link to="/contact">
+                  <Calendar className="h-5 w-5" />
                   Schedule Free Consultation
                 </Link>
               </Button>
