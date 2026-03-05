@@ -4,6 +4,35 @@ Reference for changes made to the header, contact page, and related files. Use t
 
 ---
 
+## Sidebar removal and footer copyright (recent)
+
+**Date:** March 2025
+
+### Changes made
+
+1. **Removed unused sidebar component**
+   - **Deleted:** `src/components/ui/sidebar.tsx` (entire file).
+   - The sidebar was not used anywhere in the app. The mobile navigation uses `Sheet` in `Header.tsx`; no layout or page imported from `@/components/ui/sidebar`. Removing it reduces dead code and eliminates the unused dependency.
+
+2. **Removed sidebar CSS variables**
+   - **File:** `src/index.css`
+   - **In `:root`:** Removed `--sidebar-background`, `--sidebar-foreground`, `--sidebar-primary`, `--sidebar-primary-foreground`, `--sidebar-accent`, `--sidebar-accent-foreground`, `--sidebar-border`, `--sidebar-ring`.
+   - **In `.dark`:** Removed the same set of sidebar variables under the dark theme block.
+   - These variables were only referenced by the removed sidebar component.
+
+3. **Updated footer copyright**
+   - **File:** `src/components/layout/Footer.tsx`
+   - **Change:** Bottom bar copyright text updated from `© 2024 Leading Care Tree Service. All rights reserved.` to `© 2024–2025 Leading Care Tree Service. All rights reserved.`
+   - **Location:** Bottom bar of the footer (approx. line 216).
+
+### Left unchanged (per request)
+
+- Service area, phone number, and business name placeholders (e.g. `[Tree Service Company Name]`, `123-456-7890`, `{{EMAIL}}`) were not modified.
+- "ORIGINAL" / "CURRENT" / "Mobile:" comments in `HeroSection.tsx` were left in place.
+- Other previously identified items (broken links, lint fixes, `App.css`, etc.) were not changed.
+
+---
+
 ## 1. Header (`src/components/layout/Header.tsx`)
 
 ### Top contact bar (green bar)

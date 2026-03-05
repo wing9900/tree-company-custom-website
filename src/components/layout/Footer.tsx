@@ -213,7 +213,7 @@ const Footer = ({
         <div className="container-custom py-6">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="text-sm text-primary-foreground/60 mb-4 md:mb-0">
-              © 2024 Leading Care Tree Service. All rights reserved.
+              © 2026 Leading Care Tree Service. All rights reserved.
             </div>
             <div className="flex space-x-6 text-sm">
               <Link to="/privacy" className="text-primary-foreground/60 hover:text-primary-foreground">
