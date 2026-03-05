@@ -33,17 +33,18 @@ const Header = () => {
       behavior: "smooth"
     });
   };
+  // Normalize hash (React Router / browsers may include or omit "#")
+  const currentHash = (location.hash || "").replace(/^#/, "");
   const isActive = (path: string) => {
-    // If we have a hash in the URL, only hash-based navigation should be active
-    if (location.hash) {
-      return path === `/${location.hash}`;
+    if (path.startsWith("/#")) {
+      const pathHash = path.slice(2);
+      return location.pathname === "/" && currentHash === pathHash;
     }
-    // If no hash, check normal path matching
-    if (path.startsWith('/#')) {
-      return false; // Hash-based paths are not active when there's no hash
-    }
+    // Home ("/") is active only when on home with no hash; otherwise only one nav item is active
+    if (path === "/") return location.pathname === "/" && !currentHash;
     return location.pathname === path;
   };
+
   const navigationItems = [{
     name: "Home",
     href: "/"
@@ -68,7 +69,7 @@ const Header = () => {
   }];
   return <>
       {/* Top Contact Bar - same column structure as main header for alignment */}
-      <div id="top-contact-bar" className="bg-primary text-primary-foreground text-base">
+      <div id="top-contact-bar" className="bg-primary text-primary-foreground text-base lg:text-[1.03rem] lg:font-bold">
         <div className="w-full px-2 lg:px-4 xl:px-6">
           <div className="flex items-center py-2">
             {/* Left: phone only (above logo) — adjust with md:ml-* (move right) or md:mr-* (space from edge) */}
@@ -106,19 +107,19 @@ const Header = () => {
               className="flex items-center space-x-3 cursor-pointer" 
               onClick={() => {
                 // If already on home page with no hash, scroll to top
-                if (location.pathname === '/' && !location.hash) {
+                if (location.pathname === '/' && !currentHash) {
                   window.scrollTo({
                     top: 0,
                     behavior: "smooth"
                   });
                 } else {
-                  // Navigate to home page
-                  navigate('/', { replace: false });
+                  // Navigate to home page and clear hash so Home shows active
+                  navigate({ pathname: '/', hash: '' }, { replace: false });
                 }
               }}
             >
               <div 
-                className="text-2xl font-bold tracking-wide text-orange-500"
+                className="text-2xl lg:text-[1.675rem] font-bold tracking-wide text-orange-500"
                 style={{
                   fontFamily: 'Montserrat, sans-serif',
                   fontWeight: '700',
@@ -140,9 +141,27 @@ const Header = () => {
                   } else {
                     scrollToSection('services');
                   }
-                }} className={`text-[1.02rem] font-semibold transition-colors hover:text-primary ${isActive(item.href) ? "text-primary border-b-2 border-primary" : "text-gray-700"}`}>
+                }} className={`text-[1.082rem] font-semibold transition-colors hover:text-primary ${isActive(item.href) ? "text-primary border-b-2 border-primary" : "text-gray-700"}`}>
                       {item.name}
                     </button>;
+              }
+              // Home link: clear hash so underline shows Home when on homepage
+              if (item.href === '/') {
+                return (
+                  <Link
+                    key={item.name}
+                    to={{ pathname: '/', hash: '' }}
+                    onClick={e => {
+                      if (location.pathname === '/' && !currentHash) {
+                        e.preventDefault();
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                      }
+                    }}
+                    className={`text-[1.082rem] font-semibold transition-colors hover:text-primary ${isActive(item.href) ? "text-primary border-b-2 border-primary" : "text-gray-700"}`}
+                  >
+                    {item.name}
+                  </Link>
+                );
               }
               return <Link key={item.name} to={item.href} onClick={e => {
                 // If already on this page, scroll to top
@@ -153,7 +172,7 @@ const Header = () => {
                     behavior: "smooth"
                   });
                 }
-              }} className={`text-[1.02rem] font-semibold transition-colors hover:text-primary ${isActive(item.href) ? "text-primary border-b-2 border-primary" : "text-gray-700"}`}>
+              }} className={`text-[1.082rem] font-semibold transition-colors hover:text-primary ${isActive(item.href) ? "text-primary border-b-2 border-primary" : "text-gray-700"}`}>
                     {item.name}
                   </Link>;
             })}
@@ -161,10 +180,10 @@ const Header = () => {
 
             {/* CTA Buttons - Desktop */}
             <div className="hidden lg:flex items-center space-x-6 lg:ml-0">
-              <CallButton variant="cta" size="sm" showIcon={true} className="shadow-lg">
+              <CallButton variant="cta" size="sm" showIcon={true} className="shadow-lg text-[0.893rem]">
                 Call Now
               </CallButton>
-              <Button variant="cta" size="sm" asChild className="shadow-lg">
+              <Button variant="cta" size="sm" asChild className="shadow-lg text-[0.893rem]">
                 <Link to="/contact" onClick={e => {
                 // If already on contact page, scroll to top
                 if (location.pathname === '/contact') {
@@ -202,9 +221,27 @@ const Header = () => {
                         e.preventDefault();
                         scrollToSection('services');
                       }
-                    }} className={`text-[1.02rem] font-medium transition-colors hover:text-primary text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-white ${isActive(item.href) ? "text-primary" : "text-gray-800"}`}>
+                    }} className={`text-[1.082rem] font-medium transition-colors hover:text-primary text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-white ${isActive(item.href) ? "text-primary" : "text-gray-800"}`}>
                           {item.name}
                         </Link>;
+                  }
+                  if (item.href === '/') {
+                    return (
+                      <Link
+                        key={item.name}
+                        to={{ pathname: '/', hash: '' }}
+                        onClick={e => {
+                          setIsOpen(false);
+                          if (location.pathname === '/' && !currentHash) {
+                            e.preventDefault();
+                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                          }
+                        }}
+                        className={`text-[1.082rem] font-medium transition-colors hover:text-primary text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-white ${isActive(item.href) ? "text-primary" : "text-gray-800"}`}
+                      >
+                        {item.name}
+                      </Link>
+                    );
                   }
                   return <Link key={item.name} to={item.href} onClick={e => {
                     setIsOpen(false);
@@ -216,7 +253,7 @@ const Header = () => {
                         behavior: "smooth"
                       });
                     }
-                  }} className={`text-[1.02rem] font-medium transition-colors hover:text-primary text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-white ${isActive(item.href) ? "text-primary" : "text-gray-800"}`}>
+                  }} className={`text-[1.082rem] font-medium transition-colors hover:text-primary text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-white ${isActive(item.href) ? "text-primary" : "text-gray-800"}`}>
                         {item.name}
                       </Link>;
                 })}

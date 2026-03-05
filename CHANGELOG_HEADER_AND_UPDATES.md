@@ -4,6 +4,37 @@ Reference for changes made to the header, contact page, and related files. Use t
 
 ---
 
+## Header typography and nav active state (March 2025)
+
+**File:** `src/components/layout/Header.tsx`
+
+Summary of changes: (1) Logo, top bar text, nav links, and CTA buttons made larger on desktop (or globally for nav/CTAs); (2) Nav active/underline logic fixed so only one item is active and it updates correctly on click; (3) Scroll-spy removed; (4) Home and logo navigation now clear the URL hash so “Home” shows as active when returning to the homepage.
+
+### Typography (desktop only where noted; `lg:` = 1024px+)
+
+- **Logo (“Leading Care Tree Service”):** Mobile stays `text-2xl`; desktop uses `lg:text-[1.575rem]` (~5% larger than 1.5rem). Applied to the logo div (approx. line 121).
+- **Top contact bar (green bar):** Phone, “Licensed & Insured • Emergency Services Available 24/7”, and “Pasadena, TX” use `lg:text-[1.03rem] lg:font-bold` so they are 3% larger and bold on desktop only. Applied to the bar container (approx. line 71).
+- **Nav links (Home, About, Services, Gallery, Areas We Serve, Blog, Contact):** Size is `text-[1.082rem]` in all six places (desktop Services button, desktop Home link, desktop other Links, mobile Services link, mobile Home link, mobile other Links). This is ~6% larger than the original 1.02rem (1.02 → 1.0506 → 1.082). To change again: use `current × (1 + percent/100)` (e.g. from 1.082, 3% larger → `1.082 × 1.03 ≈ 1.114rem`).
+- **Call Now / Get Quote buttons:** Added `text-[0.893rem]` (~2% larger than default `sm` 0.875rem) to both desktop CTAs. To change: use `0.875 × (1 + percent/100)` (e.g. 5% → `0.919rem`).
+
+### Nav underline (active state)
+
+- **Logic:** Active state is driven by `isActive(path)` using normalized `location.pathname` and hash (strip leading `#` for comparison). Only one item is active at a time.
+- **Home:** Active only when `pathname === '/'` and there is **no** hash. If the URL has `#services` or `#service-areas`, Home is not active.
+- **Services / Areas We Serve:** Active when `pathname === '/'` and the hash matches (`services` or `service-areas`).
+- **Other pages (About, Gallery, Blog, Contact):** Active when `pathname` equals the link path (e.g. `/contact`).
+- **Scroll-spy removed:** The feature that updated the hash (and underline) on scroll was removed; the underline now updates only on click/navigation.
+
+### Clearing hash when going to Home
+
+- **Why:** Clicking Home or the logo with a plain `to="/"` or `navigate('/')` did not clear the hash, so the URL could stay `/#services` and “Services” stayed underlined.
+- **Logo click:** Uses `navigate({ pathname: '/', hash: '' }, { replace: false })` so the hash is cleared and Home shows as active.
+- **Home link (desktop):** Rendered separately with `to={{ pathname: '/', hash: '' }}` so the link always goes to `/` with no hash.
+- **Home link (mobile menu):** Same `to={{ pathname: '/', hash: '' }}` in the sheet so behavior matches desktop.
+- **Scroll-to-top:** When already on `/` with no hash, clicking Home or the logo prevents default and scrolls to top instead of navigating.
+
+---
+
 ## Sidebar removal and footer copyright (recent)
 
 **Date:** March 2025
