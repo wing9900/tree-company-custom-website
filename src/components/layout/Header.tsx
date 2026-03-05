@@ -73,7 +73,7 @@ const Header = () => {
         <div className="w-full px-2 lg:px-4 xl:px-6">
           <div className="flex items-center py-2">
             {/* Left: phone only (above logo) — adjust with md:ml-* (move right) or md:mr-* (space from edge) */}
-            <div className="hidden md:flex flex-1 items-center md:ml-4">
+            <div className="hidden md:flex flex-1 items-center md:-ml-1">
               <div className="flex items-center gap-2">
                 <Phone className="h-4 w-4" />
                 <span>{"123-456-7890"}</span>
@@ -82,14 +82,14 @@ const Header = () => {
 
             {/* Middle: trust text centered above nav links (Home, About, Services, etc.) */}
             <div className="hidden md:flex flex-1 justify-center">
-              <span className="text-sm md:text-base ml-[10%]">
+              <span className="text-sm md:text-base ml-[-8%]">
                 Licensed & Insured • Emergency Services Available 24/7
               </span>
             </div>
 
             {/* Right: Pasadena, TX */}
             <div className="hidden md:flex flex-1 justify-end items-center">
-              <div className="flex items-center gap-2 ml-6 mr-[5%]">
+              <div className="flex items-center gap-2 ml-8 mr-[3%]">
                 <MapPin className="h-4 w-4" />
                 <span>{"Pasadena, TX"}</span>
               </div>
@@ -101,10 +101,10 @@ const Header = () => {
       {/* Main Header */}
       <header className="bg-background shadow-soft sticky top-0 z-50 sticky-header">
         <div className="w-full px-2 lg:px-4 xl:px-6">
-          <div className="flex items-center justify-between py-4 relative">
+          <div className="flex items-center justify-between py-[0.55rem] relative">
             {/* Logo */}
             <div 
-              className="flex items-center space-x-3 cursor-pointer" 
+              className="flex items-center space-x-3 cursor-pointer ml-6 lg:ml-8" 
               onClick={() => {
                 // If already on home page with no hash, scroll to top
                 if (location.pathname === '/' && !currentHash) {
@@ -118,20 +118,15 @@ const Header = () => {
                 }
               }}
             >
-              <div 
-                className="text-2xl lg:text-[1.675rem] font-bold tracking-wide text-orange-500"
-                style={{
-                  fontFamily: 'Montserrat, sans-serif',
-                  fontWeight: '700',
-                  textShadow: '1.25px 1.25px 1.5px rgba(0,0,0,0.9)'
-                }}
-              >
-                {"Leading Care Tree Service"}
-              </div>
+              <img
+                src="/logo.ico"
+                alt="Leading Care Tree Service"
+                className="h-[3.25rem] lg:h-[3.9rem] w-auto object-contain"
+              />
             </div>
 
             {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center space-x-6">
+            <nav className="hidden lg:flex items-center space-x-10 ml-16">
             {navigationItems.map(item => {
               if (item.href === "/#services") {
                 return <button key={item.name} onClick={e => {
@@ -202,7 +197,7 @@ const Header = () => {
 
             {/* Mobile Menu Button */}
             <Sheet open={isOpen} onOpenChange={setIsOpen} modal={false}>
-              <SheetTrigger asChild className="lg:hidden mr-3">
+              <SheetTrigger asChild className="lg:hidden mr-5">
                 <Button variant="outline" size="icon">
                   <Menu className="h-4 w-4" />
                 </Button>

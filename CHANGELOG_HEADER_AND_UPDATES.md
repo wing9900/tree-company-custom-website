@@ -4,6 +4,35 @@ Reference for changes made to the header, contact page, and related files. Use t
 
 ---
 
+## Logo, favicon, and header layout (March 2025)
+
+### Logo and favicon
+
+- **Favicon (browser tab):** `index.html` line 6 — `<link rel="icon" type="image/x-icon" href="/logo.ico" />`. Replaces previous default/Lovable favicon.
+- **Logo image in header:** `Header.tsx` — text “Leading Care Tree Service” replaced with `<img src="/logo.ico" alt="Leading Care Tree Service" />`. Logo lives at `public/logo.ico`.
+- **Logo size:** `Header.tsx` line 124 — `className="h-[3.25rem] lg:h-[3.9rem] w-auto object-contain"` (~30% larger than original; mobile 3.25rem, desktop 3.9rem). To resize: change the `h-[…]` values (e.g. 10% larger: multiply by 1.1).
+- **Removed:** `public/favicon.ico` (old), `public/placeholder.svg` (unused). Logo is now the single `public/logo.ico`.
+- **Project name:** `package.json` — `name` set to `"tree-company-custom-website"`.
+
+### Green bar (top contact bar) — `Header.tsx`
+
+| What | Line | Current class / note | How to adjust |
+|------|------|----------------------|----------------|
+| **123-456-7890** | 76 | `md:-ml-1` on wrapper div | More left: `md:-ml-2`, `md:-ml-4`. More right: `md:ml-0`, `md:ml-2`. |
+| **Licensed & Insured • Emergency Services Available 24/7** | 84 | `ml-[-8%]` on span | More left: `ml-[-10%]`, etc. More right: `ml-[5%]`, `ml-[10%]`. |
+| **Pasadena, TX** | 92 | `ml-8 mr-[3%]` on inner div | More right: `ml-10`, `ml-12`. More left: `ml-6`, `ml-4`. |
+
+### White header bar — `Header.tsx`
+
+| What | Line | Current class / note | How to adjust |
+|------|------|----------------------|----------------|
+| **Bar height (thickness)** | 104 | `py-[0.55rem]` on row div | Thinner: `py-[0.5rem]`. Thicker: `py-[0.6rem]`, `py-4`. Only the `py-*` controls height. |
+| **Logo (home) position** | 107 | `ml-6 lg:ml-8` on logo wrapper | More right: `ml-8 lg:ml-10`. More left: `ml-4 lg:ml-6`, or remove. |
+| **Nav links (Home, About, Services, …)** | 129 | `space-x-10 ml-16` on `<nav>` | More right: `ml-20`, `ml-24`. More left: `ml-12`, `ml-8`. Only `ml-*` moves the group. |
+| **Mobile menu button (hamburger)** | 200 | `lg:hidden mr-5` on SheetTrigger | More left: `mr-6`, `mr-8`. Closer to right edge: `mr-3`, `mr-0`. Only `mr-*` affects position. |
+
+---
+
 ## Header typography and nav active state (March 2025)
 
 **File:** `src/components/layout/Header.tsx`
@@ -73,25 +102,25 @@ Summary of changes: (1) Logo, top bar text, nav links, and CTA buttons made larg
 
 | Column   | Content | Location / Notes |
 |----------|---------|-------------------|
-| **Left** | Phone: `123-456-7890` (with icon) | Above logo. Wrapper: `hidden md:flex flex-1 items-center md:ml-4`. Change `md:ml-4` (e.g. to `md:ml-0`, `md:ml-8`) to move phone left/right. |
-| **Middle** | `Licensed & Insured • Emergency Services Available 24/7` | Centered above nav links (Home, About, Services, etc.). Span has `ml-[10%]` to nudge right; use `ml-[5%]`, `ml-[10%]`, etc. to adjust. |
-| **Right** | `Pasadena, TX` (with icon) | Wrapper has `ml-6 mr-[5%]`; `mr-[5%]` pulls it left from the edge. Tweak `ml-6` or `mr-[5%]` to move further left/right. |
+| **Left** | Phone: `123-456-7890` (with icon) | Line 76. Use `md:ml-*` or `md:-ml-*` to move phone left/right. See “Logo, favicon, and header layout” section above for current values. |
+| **Middle** | `Licensed & Insured • Emergency Services Available 24/7` | Line 84. Use `ml-[…%]` or negative % to nudge. See table above. |
+| **Right** | `Pasadena, TX` (with icon) | Line 92. Use `ml-*` and `mr-[%]` on inner div. See table above. |
 
-**Key lines (approximate):**
+**Key lines (see “Logo, favicon, and header layout” section for full table):**
 
-- **71–72:** Green bar container (`w-full px-2 lg:px-4 xl:px-6`).
-- **75:** Phone column — adjust `md:ml-*` to move phone.
-- **84:** Trust text — adjust `ml-[10%]` (or `ml-[5%]`, etc.) to nudge that line.
-- **91:** Pasadena wrapper — adjust `ml-6` and `mr-[5%]` to move location.
+- **72:** Green bar container.
+- **76:** Phone column.
+- **84:** Trust text span.
+- **92:** Pasadena wrapper.
 
 ### Main header (white bar)
 
-- **Container:** `w-full px-2 lg:px-4 xl:px-6` (full-width, minimal padding so logo and CTAs sit near edges).
-- **Row:** `flex items-center justify-between py-4 relative` — logo left, nav center, CTAs right.
-- **Logo:** “Leading Care Tree Service” — far left, no extra margin.
-- **Desktop nav:** `hidden lg:flex items-center space-x-6`; links use `text-[1.02rem] font-semibold`. `space-x-6` controls gap between Home, About, Services, etc.
-- **CTA buttons:** “Call Now” and “Get Quote” in a single wrapper with `space-x-6` (gap between the two). Wrapper has `lg:ml-0` so they sit at the right edge.
-- **Mobile:** Hamburger uses `lg:hidden mr-3` so the menu button is slightly left of the edge for easier tapping.
+- **Container:** `w-full px-2 lg:px-4 xl:px-6`.
+- **Row:** Line 104 — `py-[0.55rem]` controls bar height; logo left, nav center, CTAs right.
+- **Logo:** Line 107 — image `logo.ico` with `ml-6 lg:ml-8`; line 124 sets size `h-[3.25rem] lg:h-[3.9rem]`.
+- **Desktop nav:** Line 129 — `space-x-10 ml-16`; change `ml-*` to move nav group.
+- **CTA buttons:** Wrapper with `space-x-6`, `lg:ml-0`.
+- **Mobile menu button:** Line 200 — `lg:hidden mr-5`; change `mr-*` to move hamburger.
 
 **Key lines (approximate):**
 
