@@ -10,7 +10,7 @@ const Blog = () => {
     {
       id: 1,
       title: "Don't Let Hurricane Season Catch You Off Guard: Essential Tree Services for Houston Homes",
-      excerpt: "Living in <a href='/areas/houston'><strong>Houston</strong></a> and the surrounding Harris County areas, we know the beauty and importance of our trees. Learn why professional tree services are essential for hurricane preparation.",
+      excerpt: "",
       date: "2025-08-15",
       readTime: "5 min read",
       author: "Tree Care Expert",
@@ -81,7 +81,7 @@ const Blog = () => {
     {
       id: 2,
       title: "Is My Tree Sick? 5 Warning Signs Houston Homeowners Shouldn't Ignore",
-      excerpt: "In Houston, our trees are magnificent assets. Learn to spot the subtle signs of tree distress before they become major hazards.",
+      excerpt: "",
       date: "2025-03-10",
       readTime: "4 min read",
       author: "Certified Arborist",

@@ -73,7 +73,7 @@ const ServicesSection = () => {
                 <OptimizedImage 
                   src={service.image} 
                   alt={`${service.title} service demonstration`} 
-                  className="w-full h-60 object-cover transition-transform duration-300 group-hover:scale-105 brightness-110"
+                  className={`w-full h-60 object-cover transition-transform duration-300 group-hover:scale-105 ${service.title === "Emergency Storm Response" ? "brightness-[1.35] saturate-110" : "brightness-110"}`}
                   lazy={true}
                   aspectRatio="16/9"
                 />

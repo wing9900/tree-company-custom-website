@@ -67,32 +67,40 @@ const Header = () => {
     href: "/contact"
   }];
   return <>
-      {/* Top Contact Bar */}
-      <div id="top-contact-bar" className="bg-primary text-primary-foreground py-2 px-4 text-base">
-        <div className="container-custom flex justify-between items-center">
-          <div className="hidden md:flex items-center gap-6">
-            <div className="flex items-center gap-2">
-              <Phone className="h-4 w-4" />
-              <span>{"123-456-7890"}</span>
+      {/* Top Contact Bar - same column structure as main header for alignment */}
+      <div id="top-contact-bar" className="bg-primary text-primary-foreground text-base">
+        <div className="w-full px-2 lg:px-4 xl:px-6">
+          <div className="flex items-center py-2">
+            {/* Left: phone only (above logo) — adjust with md:ml-* (move right) or md:mr-* (space from edge) */}
+            <div className="hidden md:flex flex-1 items-center md:ml-4">
+              <div className="flex items-center gap-2">
+                <Phone className="h-4 w-4" />
+                <span>{"123-456-7890"}</span>
+              </div>
             </div>
-            <div className="flex items-center gap-2">
-              <MapPin className="h-4 w-4" />
-              <span>{"Pasadena, TX"}</span>
+
+            {/* Middle: trust text centered above nav links (Home, About, Services, etc.) */}
+            <div className="hidden md:flex flex-1 justify-center">
+              <span className="text-sm md:text-base ml-[10%]">
+                Licensed & Insured • Emergency Services Available 24/7
+              </span>
             </div>
-            <div className="text-base">
-              Licensed & Insured • Emergency Services Available 24/7
+
+            {/* Right: Pasadena, TX */}
+            <div className="hidden md:flex flex-1 justify-end items-center">
+              <div className="flex items-center gap-2 ml-6 mr-[5%]">
+                <MapPin className="h-4 w-4" />
+                <span>{"Pasadena, TX"}</span>
+              </div>
             </div>
-          </div>
-          <div className="ml-auto">
-            
           </div>
         </div>
       </div>
 
       {/* Main Header */}
       <header className="bg-background shadow-soft sticky top-0 z-50 sticky-header">
-        <div className="container-custom lg:px-4">
-          <div className="flex items-center justify-between py-4">
+        <div className="w-full px-2 lg:px-4 xl:px-6">
+          <div className="flex items-center justify-between py-4 relative">
             {/* Logo */}
             <div 
               className="flex items-center space-x-3 cursor-pointer" 
@@ -122,7 +130,7 @@ const Header = () => {
             </div>
 
             {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center space-x-8">
+            <nav className="hidden lg:flex items-center space-x-6">
             {navigationItems.map(item => {
               if (item.href === "/#services") {
                 return <button key={item.name} onClick={e => {
@@ -132,7 +140,7 @@ const Header = () => {
                   } else {
                     scrollToSection('services');
                   }
-                }} className={`text-base font-medium transition-colors hover:text-primary ${isActive(item.href) ? "text-primary border-b-2 border-primary" : "text-gray-700"}`}>
+                }} className={`text-[1.02rem] font-semibold transition-colors hover:text-primary ${isActive(item.href) ? "text-primary border-b-2 border-primary" : "text-gray-700"}`}>
                       {item.name}
                     </button>;
               }
@@ -145,14 +153,14 @@ const Header = () => {
                     behavior: "smooth"
                   });
                 }
-              }} className={`text-base font-medium transition-colors hover:text-primary ${isActive(item.href) ? "text-primary border-b-2 border-primary" : "text-gray-700"}`}>
+              }} className={`text-[1.02rem] font-semibold transition-colors hover:text-primary ${isActive(item.href) ? "text-primary border-b-2 border-primary" : "text-gray-700"}`}>
                     {item.name}
                   </Link>;
             })}
             </nav>
 
             {/* CTA Buttons - Desktop */}
-            <div className="hidden lg:flex items-center space-x-3 lg:ml-6">
+            <div className="hidden lg:flex items-center space-x-6 lg:ml-0">
               <CallButton variant="cta" size="sm" showIcon={true} className="shadow-lg">
                 Call Now
               </CallButton>
@@ -175,7 +183,7 @@ const Header = () => {
 
             {/* Mobile Menu Button */}
             <Sheet open={isOpen} onOpenChange={setIsOpen} modal={false}>
-              <SheetTrigger asChild className="lg:hidden">
+              <SheetTrigger asChild className="lg:hidden mr-3">
                 <Button variant="outline" size="icon">
                   <Menu className="h-4 w-4" />
                 </Button>
