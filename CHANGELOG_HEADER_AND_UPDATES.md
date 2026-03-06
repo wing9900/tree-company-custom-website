@@ -93,6 +93,46 @@ Summary of changes: (1) Logo, top bar text, nav links, and CTA buttons made larg
 
 ---
 
+## Chat widget (Go High Level / Lead Connector) — March 2026
+
+### What’s in the repo
+
+- **Single embed:** The only voice/chat widget code is one script tag in `index.html` (lines 28–32). No custom CSS, no React components, no wrapper.
+- **Widget ID:** `69aa4567d72daad629a92a35` (beta Lead Connector chat widget).
+- **Script URL:** `https://beta.leadconnectorhq.com/loader.js` with `data-resources-url="https://beta.leadconnectorhq.com/chat-widget/loader.js"`.
+
+### Location in code
+
+| What | File | Lines |
+|------|------|--------|
+| Chat widget script | `index.html` | 28–32 |
+| Booking widget (different) | `src/pages/Contact.tsx` | ~147 (iframe; not the voice chat) |
+
+### Script order (important)
+
+- The GHL script is placed **before** the React app script (`main.tsx`). The loader uses `document.currentScript` to read `data-widget-id` and other attributes. If the GHL script runs after the React script (or is injected dynamically in some setups), the widget can fail to load.
+- **Do not** move the GHL script to after `main.tsx` unless you use a delayed inject that still allows the loader to see the script element when it runs.
+
+### What was removed for a fresh start
+
+- All previous voice/chat widget embeds (old widget IDs, setTimeout injects, custom z-index/overflow CSS).
+- Any `ChatWidgetSection` or green “Sarah answers” card component (deleted earlier).
+- No DNS prefetch or other head/body code for the chat widget; only the one script tag.
+
+### Replacing the widget
+
+To switch to a new GHL chat widget:
+
+1. In `index.html`, replace the script tag in the body (the one with `beta.leadconnectorhq.com/loader.js`).
+2. Update only the three attributes as needed: `src`, `data-resources-url`, `data-widget-id`. Keep the script **before** `<script type="module" src="/src/main.tsx"></script>`.
+3. Do not add a second chat widget script (e.g. from `widgets.leadconnectorhq.com`); one loader per chat widget.
+
+### Greeting bubble (for reference)
+
+If the greeting/text bubble does not show while the launcher button does, the cause is usually (1) Go High Level settings (greeting message and “show again” / next-prompt timer in Sites → Chat Widget), or (2) stacking/visibility on the page. This repo does not add any custom CSS for the widget; add minimal rules only if the widget is hidden behind the header.
+
+---
+
 ## 1. Header (`src/components/layout/Header.tsx`)
 
 ### Top contact bar (green bar)
@@ -172,6 +212,7 @@ Summary of changes: (1) Logo, top bar text, nav links, and CTA buttons made larg
 | Emergency card image look | ServicesSection.tsx | Line ~76 |
 | Site-wide container padding (lg) | index.css | Line ~270 |
 | Blog excerpt text | Blog.tsx | Lines ~10, ~81 |
+| Chat widget (GHL) | index.html | Lines 28–32; see “Chat widget” section above |
 
 ---
 
