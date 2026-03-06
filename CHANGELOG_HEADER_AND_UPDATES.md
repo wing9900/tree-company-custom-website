@@ -133,6 +133,55 @@ If the greeting/text bubble does not show while the launcher button does, the ca
 
 ---
 
+## Sarah card (widget background) — March 2026
+
+**File:** `src/components/sections/ChatWidgetSection.tsx`  
+**Usage:** Imported and rendered on the homepage in `src/pages/Index.tsx` (after `FAQSection`). Fixed in the bottom-right so it sits behind/under the GHL chat widget button.
+
+### What it is
+
+- A compact fixed card (“Sarah card”) that promotes the AI receptionist and sits behind the green chat widget button.
+- Contains: “Live · Available 24/7” badge (with pulse), headline “Your phone rings at 11pm. Sarah answers.”, three checkmark bullets, a short divider, and a CTA link “Want this for your business?” (underlined, links to `/contact`).
+- Close button (×) hides the card for the session (React state).
+- Hidden on viewports ≤640px via CSS class `.sarah-card`.
+
+### Bullet order (checkmark lines)
+
+1. No salary, no sick days, no hassle  
+2. Captures every call and website lead  
+3. Books your calendar and notifies you instantly  
+
+### How to adjust the card (dimensions and position)
+
+All of the following are in the main card `div` style object in `ChatWidgetSection.tsx`:
+
+| What | Line | Property | Example values |
+|------|------|----------|----------------|
+| **Up/down** | 37 | `bottom: "12px"` | Higher = move up (e.g. `"24px"`). Lower = move down (e.g. `"8px"`). |
+| **Left/right** | 38 | `right: "11px"` | Higher = move left. Lower = move right. |
+| **Card width** | 39 | `width: "300px"` | e.g. `"280px"` (narrower), `"320px"` (wider). |
+| **Internal spacing** | 43 | `padding: "14px 16px"` | First = top/bottom, second = left/right. |
+| **Corner roundness** | 42 | `borderRadius: "16px"` | Smaller = sharper corners. |
+
+### How to adjust the divider above the CTA
+
+- **Line 145:** `marginRight: "28px"` — shortens the line so it doesn’t run behind the widget button. Increase to shorten the line further; decrease to lengthen it.
+
+### How to adjust the check marks (size and position)
+
+- **Check mark size:** In the `CheckIcon` component at the **top of the file** (lines 4–14):
+  - **Line 5:** `width="10"` and `height="8"` — increase for a bigger icon (e.g. `width="12"` `height="10"`).
+  - **Line 9:** `strokeWidth="1.8"` — increase for a thicker check (e.g. `"2.2"`).
+- **Space between check and text:** On **lines 120, 126, 132** (each bullet row), the object has `gap: "8px"`. Increase to move the icon farther from the text; decrease to bring it closer.
+- **Check mark up/down:** Wrap `<CheckIcon />` in a span with `style={{ transform: "translateY(1px)" }}` to nudge down, or `translateY(-1px)` to nudge up.
+
+### index.html changes (March 2026)
+
+- **Twitter site meta removed:** `<meta name="twitter:site" content="@gulfcoasttree" />` was removed so shared links are not attributed to another business’s Twitter handle.
+- **Chat widget position CSS removed:** A `<style>` block that tried to position the GHL chat button (desktop vs mobile) was removed; it did not reliably move the widget. Widget placement is left to GHL defaults.
+
+---
+
 ## 1. Header (`src/components/layout/Header.tsx`)
 
 ### Top contact bar (green bar)
@@ -213,6 +262,7 @@ If the greeting/text bubble does not show while the launcher button does, the ca
 | Site-wide container padding (lg) | index.css | Line ~270 |
 | Blog excerpt text | Blog.tsx | Lines ~10, ~81 |
 | Chat widget (GHL) | index.html | Lines 28–32; see “Chat widget” section above |
+| Sarah card (position, size, divider, checkmarks) | ChatWidgetSection.tsx | See “Sarah card (widget background)” section above |
 
 ---
 
