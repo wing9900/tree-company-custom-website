@@ -119,19 +119,19 @@ const ChatWidgetSection = () => {
         <div style={{ display: "flex", flexDirection: "column", gap: "8px", marginBottom: "16px" }}>
           <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
             <CheckIcon />
-            <span style={{ color: "rgba(255,255,255,0.9)", fontSize: "12px" }}>
+            <span style={{ color: "rgba(255,255,255,1)", fontSize: "12px", fontWeight: 500 }}>
               No salary, no sick days, no stress
             </span>
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
             <CheckIcon />
-            <span style={{ color: "rgba(255,255,255,0.9)", fontSize: "12px" }}>
+            <span style={{ color: "rgba(255,255,255,1)", fontSize: "12px", fontWeight: 500 }}>
               Captures every call and website lead
             </span>
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
             <CheckIcon />
-            <span style={{ color: "rgba(255,255,255,0.9)", fontSize: "12px" }}>
+            <span style={{ color: "rgba(255,255,255,1)", fontSize: "12px", fontWeight: 500 }}>
               Books your calendar and notifies you instantly
             </span>
           </div>
@@ -140,7 +140,7 @@ const ChatWidgetSection = () => {
         <div
           style={{
             height: "1px",
-            background: "rgba(255,255,255,0.07)",
+            background: "rgba(255, 255, 255, 0.18)",
             marginBottom: "14px",
             marginRight: "55px",
           }}
@@ -150,13 +150,13 @@ const ChatWidgetSection = () => {
           to="/contact"
           style={{
             color: "#e8620a",
-            fontSize: "13px",
+            fontSize: "11.25px",
             fontWeight: 700,
             textDecoration: "underline",
             display: "inline-block",
           }}
         >
-          Try an agent free for your business
+          TRY AN AGENT FREE FOR YOUR BUSINESS
         </Link>
       </div>
     </>

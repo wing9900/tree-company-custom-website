@@ -180,6 +180,37 @@ All of the following are in the main card `div` style object in `ChatWidgetSecti
 - **Twitter site meta removed:** `<meta name="twitter:site" content="@gulfcoasttree" />` was removed so shared links are not attributed to another business’s Twitter handle.
 - **Chat widget position CSS removed:** A `<style>` block that tried to position the GHL chat button (desktop vs mobile) was removed; it did not reliably move the widget. Widget placement is left to GHL defaults.
 
+### Sarah card tweaks (March 2026)
+
+- **Mobile visibility:** The card is **hidden on viewports ≤640px** via `.sarah-card { display: none !important; }` in a `@media (max-width: 640px)` block (lines 27–29). It was briefly shown on mobile then reverted.
+- **Bullet text styling:** The three checkmark lines use `color: "rgba(255,255,255,1)"` (full white) and `fontWeight: 500` so they are slightly bolder than normal without competing with the headline (`fontWeight: 800`). To soften: use `rgba(255,255,255,0.9)` and/or remove `fontWeight` or set to `400`. To emphasize more: use `600`.
+- **Card width:** Main card `div` uses `width: "340px"` (line 38). Adjust there to make the card narrower or wider.
+
+---
+
+## Booking calendar (Contact page) — March 2026
+
+**File:** `src/pages/Contact.tsx` (Booking Calendar - Right Side, ~lines 144–154)
+
+### Current embed
+
+- **Widget URL:** `https://api.leadconnectorhq.com/widget/booking/Opssx8ON48iWulrY0I2b`
+- **iframe id:** `Opssx8ON48iWulrY0I2b_1772871842799`
+- **Dimensions:** `width: '100%'`, `height: '800px'` so the calendar and “Enter Details” form fit in a fixed-height area.
+- **Scrolling:** `scrolling="yes"` and `style={{ overflow: 'auto' }}` so the **entire widget content** (calendar, then form) scrolls inside the iframe. The browser’s scrollbar appears on the iframe when content is taller than 800px. No outer wrapper or custom scrollbar; scrolling is handled inside the iframe only.
+- **Script:** `https://link.msgsndr.com/js/form_embed.js` is included in a `<script>` tag immediately after the iframe (required for the booking form behavior).
+
+### Replacing the booking widget
+
+1. In `Contact.tsx`, locate the iframe in the “Booking Calendar - Right Side” block.
+2. Replace the `src` URL with the new booking widget URL from GHL/Lead Connector (format: `https://api.leadconnectorhq.com/widget/booking/{widgetId}`).
+3. Update the iframe `id` to match the value provided by GHL (often `{widgetId}_{timestamp}`).
+4. Keep `scrolling="yes"` and `overflow: 'auto'` so users can scroll to the form and submit. Leave the form_embed.js script in place.
+
+### Note on “Work Description” and widget content
+
+- The “Work Description” text area and other fields inside the booking form are rendered by the GHL widget (inside the iframe). Their default size, placeholder text, and validation cannot be changed from this repo; adjust them in the Go High Level / Lead Connector booking form settings.
+
 ---
 
 ## 1. Header (`src/components/layout/Header.tsx`)
@@ -223,7 +254,7 @@ All of the following are in the main card `div` style object in `ChatWidgetSecti
 ## 2. Contact page (`src/pages/Contact.tsx`)
 
 - **Hours heading:** “Hour of Operation” → “Hours of Operation” (line ~219).
-- No other layout or content changes in this round.
+- **Booking calendar:** GHL booking widget embed (iframe + form_embed.js). See “Booking calendar (Contact page) — March 2026” above for widget ID, scrolling behavior, and how to replace.
 
 ---
 
@@ -263,6 +294,7 @@ All of the following are in the main card `div` style object in `ChatWidgetSecti
 | Blog excerpt text | Blog.tsx | Lines ~10, ~81 |
 | Chat widget (GHL) | index.html | Lines 28–32; see “Chat widget” section above |
 | Sarah card (position, size, divider, checkmarks) | ChatWidgetSection.tsx | See “Sarah card (widget background)” section above |
+| Booking calendar (widget URL, height, scrolling) | Contact.tsx | ~lines 144–154; see “Booking calendar (Contact page)” section above |
 
 ---
 
