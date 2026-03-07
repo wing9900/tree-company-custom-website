@@ -36,9 +36,9 @@ const sheetVariants = cva(
         top: "inset-x-0 top-0 border-b data-[state=closed]:slide-out-to-top data-[state=open]:slide-in-from-top",
         bottom:
           "inset-x-0 bottom-0 border-t data-[state=closed]:slide-out-to-bottom data-[state=open]:slide-in-from-bottom",
-        left: "inset-y-0 left-0 h-full w-3/4 border-r data-[state=closed]:slide-out-to-left data-[state=open]:slide-in-from-left sm:max-w-sm",
+        left: "left-0 top-0 h-[56vh] max-h-[min(56vh,473px)] w-[min(260px,75vw)] max-w-[260px] overflow-y-auto border-r rounded-tr-lg rounded-br-lg rounded-bl-lg rounded-tl-none data-[state=closed]:slide-out-to-left data-[state=open]:slide-in-from-left",
         right:
-          "inset-y-0 right-0 h-full w-3/4  border-l data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right sm:max-w-sm",
+          "right-0 top-0 h-[56vh] max-h-[min(56vh,473px)] w-[min(260px,75vw)] max-w-[260px] overflow-y-auto border-l rounded-tl-lg rounded-bl-lg rounded-br-lg rounded-tr-none data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right",
       },
     },
     defaultVariants: {
@@ -63,7 +63,7 @@ const SheetContent = React.forwardRef<
       {...props}
     >
       {children}
-      <SheetPrimitive.Close className="absolute right-5 top-4 rounded-sm text-gray-900 opacity-90 ring-offset-background transition-transform transition-opacity hover:text-gray-700 hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-secondary">
+      <SheetPrimitive.Close className="absolute right-5 top-6 rounded-sm text-gray-900 opacity-90 ring-offset-background transition-transform transition-opacity hover:text-gray-700 hover:opacity-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-secondary">
         <X className="h-5 w-5" />
         <span className="sr-only">Close</span>
       </SheetPrimitive.Close>

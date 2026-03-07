@@ -213,6 +213,35 @@ All of the following are in the main card `div` style object in `ChatWidgetSecti
 
 ---
 
+## Mobile menu (sheet) and header — March 2026
+
+### Green strip (top contact bar) on mobile only
+
+- **File:** `src/components/layout/Header.tsx`
+- **Change:** The top green bar (`#top-contact-bar`) has `hidden lg:block` in its `className`. It is **hidden on viewports below 1024px** (mobile/tablet) and **visible at lg and above** (desktop). On mobile, the white header and page content sit at the top with no green strip. `getHeaderOffset()` still uses the bar's height when present; when hidden, its height is 0 so scroll offset remains correct.
+
+### White menu box (sheet) — size, position, corners
+
+- **File:** `src/components/ui/sheet.tsx` — left/right variants (lines 39 and 41).
+- **Position:** `top-0` so the panel is flush with the top of the viewport on all breakpoints.
+- **Width:** `w-[min(260px,75vw)] max-w-[260px]` — at most 260px; on narrow viewports uses 75% of viewport width.
+- **Height:** `h-[56vh] max-h-[min(56vh,473px)]` — 56% of viewport height, capped at 473px on tall viewports so the menu doesn't get too long on desktop/narrowed window. Mobile (shorter viewport) is unaffected by the cap.
+- **Corners:** Rounded except top-right: `rounded-tl-lg rounded-bl-lg rounded-br-lg rounded-tr-none` (right panel). Left panel uses the opposite (rounded except top-left).
+- **Scrolling:** `overflow-y-auto` so the menu content scrolls when it exceeds the height.
+- **Close button:** Built-in Sheet close (X) is `absolute right-5 top-6` in `sheet.tsx` (line 66). No custom close button; the default Radix/shadcn close is used.
+
+### Mobile menu trigger (hamburger)
+
+- **File:** `src/components/layout/Header.tsx` — Sheet and SheetTrigger (around lines 199–205).
+- **Sheet:** `open={isOpen} onOpenChange={setIsOpen}` only; no refs, blur, or repaint logic.
+- **Button:** `<Button variant="outline" size="icon">` with no id or extra `className`. Visible only when the sheet is used (`lg:hidden` on SheetTrigger).
+
+### Blue-button fix attempts reverted
+
+- Multiple attempts were made to fix a persistent blue highlight on the hamburger after closing the sheet on mobile (focus/ring overrides, ref + blur, repaint trick, custom close on the left, pointer-events-none, etc.). All of that code has been **removed**. The implementation is back to the default: plain Sheet with `setIsOpen`, outline Button, and the built-in Sheet close (X). No related overrides remain in `Header.tsx`, `sheet.tsx`, or `index.css`.
+
+---
+
 ## 1. Header (`src/components/layout/Header.tsx`)
 
 ### Top contact bar (green bar)
@@ -295,6 +324,8 @@ All of the following are in the main card `div` style object in `ChatWidgetSecti
 | Chat widget (GHL) | index.html | Lines 28–32; see “Chat widget” section above |
 | Sarah card (position, size, divider, checkmarks) | ChatWidgetSection.tsx | See “Sarah card (widget background)” section above |
 | Booking calendar (widget URL, height, scrolling) | Contact.tsx | ~lines 144–154; see “Booking calendar (Contact page)” section above |
+| Green strip visibility (mobile vs desktop) | Header.tsx | top-contact-bar: `hidden lg:block`; see "Mobile menu (sheet) and header" section above |
+| White menu box (sheet) size, position, corners, height cap | sheet.tsx | Lines 39, 41 (left/right variants); see "Mobile menu (sheet) and header" section above |
 
 ---
 

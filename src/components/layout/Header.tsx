@@ -69,7 +69,7 @@ const Header = () => {
   }];
   return <>
       {/* Top Contact Bar - same column structure as main header for alignment */}
-      <div id="top-contact-bar" className="bg-primary text-primary-foreground text-base lg:text-[1.03rem] lg:font-bold">
+      <div id="top-contact-bar" className="hidden lg:block bg-primary text-primary-foreground text-base lg:text-[1.03rem] lg:font-bold">
         <div className="w-full px-2 lg:px-4 xl:px-6">
           <div className="flex items-center py-2">
             {/* Left: phone only (above logo) — adjust with md:ml-* (move right) or md:mr-* (space from edge) */}
@@ -196,17 +196,13 @@ const Header = () => {
             </div>
 
             {/* Mobile Menu Button */}
-            <Sheet open={isOpen} onOpenChange={setIsOpen} modal={false}>
+            <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild className="lg:hidden mr-5">
                 <Button variant="outline" size="icon">
                   <Menu className="h-4 w-4" />
                 </Button>
               </SheetTrigger>
-              <SheetContent
-                side="right"
-                className="w-300 [&_[data-radix-sheet-close]]:text-gray-950 [&_[data-radix-sheet-close]]:hover:text-gray-800 [&_[data-radix-sheet-close]_svg]:h-7 [&_[data-radix-sheet-close]_svg]:w-7"
-                onOpenAutoFocus={event => event.preventDefault()}
-              >
+              <SheetContent side="right">
                 <div className="flex flex-col space-y-4 mt-8">
                   {navigationItems.map(item => {
                   if (item.href === "/#services") {
