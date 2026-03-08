@@ -242,6 +242,31 @@ All of the following are in the main card `div` style object in `ChatWidgetSecti
 
 ---
 
+## Hero and deployment fixes — March 2026
+
+### Hero “Get Free Estimate” button (404 fix)
+
+- **File:** `src/components/sections/HeroSection.tsx`
+- **Problem:** The button used `<a href="/contact">`, which triggers a full page request to `/contact`. On the live host (e.g. Vercel), there is no file at that path, so the server returned **404 NOT_FOUND** when the button was clicked or the URL was opened directly.
+- **Fix:** Replaced the anchor with React Router’s `<Link to="/contact">` so navigation is client-side. The Contact page now loads without a 404. The `Link` import was added from `react-router-dom`.
+- **Location:** The CTA button with the Calendar icon and “Get Free Estimate” text (around lines 108–113). Do not revert to `<a href="/contact">` for this button.
+
+### Vercel SPA routing (404 on refresh fix)
+
+- **File:** `vercel.json` (project root)
+- **Problem:** Refreshing or opening a direct link to a route (e.g. `/contact`, `/about`) on the live site caused **404 NOT_FOUND** because Vercel looks for a file at that path; in an SPA, routes exist only in the client.
+- **Fix:** Added a rewrite so all requests are served `index.html`, allowing the React app to load and React Router to handle the route:
+  ```json
+  {
+    "rewrites": [
+      {"source": "/(.*)", "destination": "/index.html"}
+    ]
+  }
+  ```
+- **Note:** After deploying, Vercel will serve `index.html` for every path, so refresh and direct links work. Do not remove `vercel.json` or the `rewrites` entry without replacing it with an equivalent SPA fallback (e.g. same rule in another host’s config).
+
+---
+
 ## 1. Header (`src/components/layout/Header.tsx`)
 
 ### Top contact bar (green bar)
@@ -326,6 +351,8 @@ All of the following are in the main card `div` style object in `ChatWidgetSecti
 | Booking calendar (widget URL, height, scrolling) | Contact.tsx | ~lines 144–154; see “Booking calendar (Contact page)” section above |
 | Green strip visibility (mobile vs desktop) | Header.tsx | top-contact-bar: `hidden lg:block`; see "Mobile menu (sheet) and header" section above |
 | White menu box (sheet) size, position, corners, height cap | sheet.tsx | Lines 39, 41 (left/right variants); see "Mobile menu (sheet) and header" section above |
+| Hero “Get Free Estimate” button (link to Contact) | HeroSection.tsx | ~lines 109–113; use `<Link to="/contact">` not `<a href="/contact">` |
+| Vercel SPA routing (fix 404 on refresh) | vercel.json | Root; `rewrites` to `/index.html` |
 
 ---
 

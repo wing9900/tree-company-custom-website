@@ -1,6 +1,7 @@
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { CallButton } from "@/components/ui/call-button";
-import { Phone, Calendar, Star } from "lucide-react";
+import { Calendar, Star } from "lucide-react";
 const heroImage = "/assets/Website_Background.webp";
 
 // Review widget profile photos - using realistic placeholder images
@@ -106,10 +107,10 @@ const HeroSection = () => {
               Call Now
             </CallButton>
             <Button variant="cta" size="xl" className="text-lg h-14 [&_svg]:!h-5 [&_svg]:!w-6" asChild style={{boxShadow: '0 4px 8px rgba(0,0,0,0.3)'}}>
-              <a href="/contact">
+              <Link to="/contact">
                 <Calendar />
                 Get Free Estimate
-              </a>
+              </Link>
             </Button>
           </div>
 
