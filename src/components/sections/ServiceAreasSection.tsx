@@ -24,7 +24,7 @@ const ServiceAreasSection = () => {
   ];
 
   return (
-    <section id="service-areas" className="section-padding bg-muted/30">
+    <section id="service-areas" className="section-padding bg-muted/30 scroll-mt-24">
       <div className="container-custom">
         {/* Section Header */}
         <div className="text-center mb-12">

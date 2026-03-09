@@ -67,7 +67,8 @@ const Header = () => {
     name: "Contact",
     href: "/contact"
   }];
-  return <>
+  return (
+    <div className="sticky top-0 z-50">
       {/* Top Contact Bar - same column structure as main header for alignment */}
       <div id="top-contact-bar" className="hidden lg:block bg-primary text-primary-foreground text-base lg:text-[1.03rem] lg:font-bold">
         <div className="w-full px-2 lg:px-4 xl:px-6">
@@ -99,7 +100,7 @@ const Header = () => {
       </div>
 
       {/* Main Header */}
-      <header className="bg-background shadow-soft sticky top-0 z-50 sticky-header">
+      <header className="bg-background shadow-soft sticky-header">
         <div className="w-full px-2 lg:px-4 xl:px-6">
           <div className="flex items-center justify-between py-[0.55rem] relative">
             {/* Logo */}
@@ -131,11 +132,7 @@ const Header = () => {
               if (item.href === "/#services") {
                 return <button key={item.name} onClick={e => {
                   e.preventDefault();
-                  if (location.pathname !== '/') {
-                    navigate('/#services');
-                  } else {
-                    scrollToSection('services');
-                  }
+                  navigate({ pathname: '/', hash: 'services' });
                 }} className={`text-[1.082rem] font-semibold transition-colors hover:text-primary ${isActive(item.href) ? "text-primary border-b-2 border-primary" : "text-gray-700"}`}>
                       {item.name}
                     </button>;
@@ -206,13 +203,7 @@ const Header = () => {
                 <div className="flex flex-col space-y-4 mt-8">
                   {navigationItems.map(item => {
                   if (item.href === "/#services") {
-                    return <Link key={item.name} to={item.href} onClick={e => {
-                      setIsOpen(false);
-                      if (location.pathname === '/') {
-                        e.preventDefault();
-                        scrollToSection('services');
-                      }
-                    }} className={`text-[1.082rem] font-medium transition-colors hover:text-primary text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-white ${isActive(item.href) ? "text-primary" : "text-gray-800"}`}>
+                    return <Link key={item.name} to="/#services" onClick={() => setIsOpen(false)} className={`text-[1.082rem] font-medium transition-colors hover:text-primary text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-2 focus-visible:ring-offset-white ${isActive(item.href) ? "text-primary" : "text-gray-800"}`}>
                           {item.name}
                         </Link>;
                   }
@@ -276,7 +267,7 @@ const Header = () => {
           </div>
         </div>
       </header>
-
-    </>;
+    </div>
+  );
 };
 export default Header;

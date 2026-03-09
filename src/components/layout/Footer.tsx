@@ -180,7 +180,16 @@ const Footer = ({
                 </li>
               ))}
             </ul>
-            <Link to="/#service-areas" className="text-sm text-primary-foreground/60 hover:text-primary-foreground transition-colors inline-block mt-2">
+            <Link
+              to="/#service-areas"
+              className="text-sm text-primary-foreground/60 hover:text-primary-foreground transition-colors inline-block mt-2"
+              onClick={(e) => {
+                if (window.location.pathname === "/" && window.location.hash === "#service-areas") {
+                  e.preventDefault();
+                  document.getElementById("service-areas")?.scrollIntoView({ behavior: "smooth", block: "start" });
+                }
+              }}
+            >
               View All Areas →
             </Link>
           </div>

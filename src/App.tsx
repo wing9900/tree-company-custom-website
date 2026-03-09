@@ -23,6 +23,7 @@ import SugarLand from "./pages/areas/SugarLand";
 import Richmond from "./pages/areas/Richmond";
 import Rosenberg from "./pages/areas/Rosenberg";
 import Fulshear from "./pages/areas/Fulshear";
+import ChatWidgetSection from "./components/sections/ChatWidgetSection";
 
 const queryClient = new QueryClient();
 
@@ -134,6 +135,7 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <ScrollToTop />
+        <ChatWidgetSection />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<About />} />

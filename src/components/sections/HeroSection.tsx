@@ -33,7 +33,7 @@ const HeroSection = () => {
         <div className="max-w-4xl mx-auto w-full px-4">
           {/* Main Headline */}
           {/* ORIGINAL: text-hero (which is text-4xl md:text-5xl lg:text-6xl) */}
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-4 sm:mb-6 animate-slide-up" style={{textShadow: '2px 2px 4px rgba(0,0,0,0.8)'}}>
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-4 sm:mb-6 -mt-0 sm:-mt-4 animate-slide-up" style={{textShadow: '2px 2px 4px rgba(0,0,0,0.8)'}}>
             Professional Tree Services in{" "}
             <span className="text-orange-400 whitespace-nowrap">{"Pasadena, TX"}</span>
           </h1>
