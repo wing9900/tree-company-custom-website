@@ -13,6 +13,7 @@
 - Main heading "Your phone rings at 11pm. Sarah answers.": fontWeight 800→900 (desktop), 700→800 (mobile)
 - Bullet points (No salary, Captures every call, Books your calendar): fontWeight 500→600 on both mobile and desktop
 - Added configurable space between "11pm." and "Sarah answers." on mobile via `MOBILE_PHRASE_GAP`
+- Added `MOBILE_PHRASE_GAP_VERTICAL` for vertical space between "Your phone rings at 11pm." and "Sarah answers." lines on mobile (default: 4px)
 
 **Mobile Layout**
 - Increased all mobile card elements by 5%: text sizes, badge, checkmarks, padding, gaps, margins

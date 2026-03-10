@@ -15,6 +15,8 @@ const CheckIcon = () => (
 
 // Adjust this to change space between "11pm." and "Sarah answers." on mobile (e.g. "4px", "8px", "0.5em")
 const MOBILE_PHRASE_GAP = "1.5px";
+// Adjust vertical space between "Your phone rings" line and "Sarah answers." line on mobile (e.g. "4px", "8px")
+const MOBILE_PHRASE_GAP_VERTICAL = "3px";
 // Adjust this to shift the Live badge up/down on mobile: negative = up, positive = down (e.g. "-6px", "4px")
 const MOBILE_BADGE_OFFSET_Y = "-5px";
 
@@ -213,8 +215,10 @@ const ChatWidgetSection = () => {
           <span style={{ width: "4.62px", height: "4.62px", background: "#ff9542", borderRadius: "50%", display: "inline-block", animation: "sarah-pulse 2s infinite" }} />
           <span style={{ color: "#fff5e8", fontSize: "9.55px", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase" }}>Live · Available 24/7</span>
         </div>
-        <div style={{ color: "#fff", fontSize: "12.98px", fontWeight: 830, lineHeight: 1.25, marginBottom: "8.4px", letterSpacing: "-0.01em" }}>
-          Your phone rings at 11pm.{" "}<span style={{ color: "#e8620a", marginLeft: MOBILE_PHRASE_GAP }}>Sarah answers.</span>
+        <div style={{ color: "#fff", fontSize: "12.98px", fontWeight: 800, lineHeight: 1.25, marginBottom: "8.4px", letterSpacing: "-0.01em" }}>
+          Your phone rings at 11pm.
+          <br />
+          <span style={{ color: "#e8620a", marginLeft: MOBILE_PHRASE_GAP, marginTop: MOBILE_PHRASE_GAP_VERTICAL, display: "inline-block" }}>Sarah answers.</span>
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: "5.25px", marginBottom: "8.4px", paddingRight: "25.2px" }}>
           <div style={{ display: "flex", alignItems: "center", gap: "6.3px" }}>
