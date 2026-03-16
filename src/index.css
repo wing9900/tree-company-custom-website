@@ -147,6 +147,11 @@
   html {
     scroll-behavior: smooth;
   }
+
+  /* Disable mobile touch callout (Save/Copy Image popup) on long-press */
+  img {
+    -webkit-touch-callout: none;
+  }
 }
 
 @layer components {
