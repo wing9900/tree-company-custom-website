@@ -30,6 +30,10 @@ All positioning and sizing is controlled via constants at the top of `ChatWidget
 
 ## Other Changes
 
+### Link preview (og:image, twitter:image)
+- Switched to `/logo.ico` (header logo) for link previews when sharing site URL
+- Removed `public/assets/Hero_Page_Image.webp`
+
 ### index.html
 - Viewport meta: `viewport-fit=cover`, `interactive-widget=resizes-visual`
 
@@ -44,3 +48,4 @@ All positioning and sizing is controlled via constants at the top of `ChatWidget
 - `index.html`
 - `src/index.css`
 - `CHANGELOG.md`
+- `public/assets/Hero_Page_Image.webp` (deleted)

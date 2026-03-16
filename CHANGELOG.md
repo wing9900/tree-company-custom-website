@@ -35,6 +35,13 @@
 
 ---
 
+### Link preview image (og:image, twitter:image)
+- Switched from `/assets/Hero_Page_Image.webp` to `/logo.ico` (same as header logo/favicon)
+- Deleted `public/assets/Hero_Page_Image.webp` (no longer used)
+- Link previews when sharing site URL now show the logo
+
+---
+
 ### index.html
 - Viewport meta: added `viewport-fit=cover` and `interactive-widget=resizes-visual` for better mobile behavior
 
